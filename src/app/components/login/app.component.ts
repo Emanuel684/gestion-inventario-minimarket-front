@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class LoginComponent {
-  title = 'login';
+  title = 'Login';
 }
