@@ -35,7 +35,7 @@ import {
   withEventReplay,
   withHttpTransferCacheOptions,
   withI18nSupport,
-  withNoHttpTransferCache
+  withNoHttpTransferCache,
 } from "./chunk-2P6HCSBA.js";
 import "./chunk-ZDDPHS7B.js";
 export {
@@ -75,6 +75,6 @@ export {
   KeyEventsPlugin as ɵKeyEventsPlugin,
   SharedStylesHost as ɵSharedStylesHost,
   getDOM as ɵgetDOM,
-  initDomAdapter as ɵinitDomAdapter
+  initDomAdapter as ɵinitDomAdapter,
 };
 //# sourceMappingURL=@angular_platform-browser.js.map

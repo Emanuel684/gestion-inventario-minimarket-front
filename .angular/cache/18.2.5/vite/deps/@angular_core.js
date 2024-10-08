@@ -461,7 +461,7 @@ import {
   ɵɵtwoWayProperty,
   ɵɵvalidateIframeAttribute,
   ɵɵviewQuery,
-  ɵɵviewQuerySignal
+  ɵɵviewQuerySignal,
 } from "./chunk-ZDDPHS7B.js";
 export {
   ANIMATION_MODULE_TYPE,
@@ -928,6 +928,6 @@ export {
   ɵɵtwoWayProperty,
   ɵɵvalidateIframeAttribute,
   ɵɵviewQuery,
-  ɵɵviewQuerySignal
+  ɵɵviewQuerySignal,
 };
 //# sourceMappingURL=@angular_core.js.map

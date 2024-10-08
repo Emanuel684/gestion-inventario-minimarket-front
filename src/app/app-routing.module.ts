@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/app.component';
-import { LoginComponent } from './components/login/app.component';
-import { ClientesComponent } from './components/clientes/app.component';
-import { InventarioComponent } from './components/inventario/app.component';
-import { NegocioComponent } from './components/negocio/app.component';
-import { RecuperacionComponent } from './components/recuperacion_cuenta/app.component';
-import { TenderoComponent } from './components/tendero/app.component';
-import { ProductosComponent } from './components/productos/app.component';
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { HomeComponent } from './components/home/app.component'
+import { LoginComponent } from './components/login/app.component'
+import { ClientesComponent } from './components/clientes/app.component'
+import { InventarioComponent } from './components/inventario/app.component'
+import { NegocioComponent } from './components/negocio/app.component'
+import { RecuperacionComponent } from './components/recuperacion_cuenta/app.component'
+import { TenderoComponent } from './components/tendero/app.component'
+import { ProductosComponent } from './components/productos/app.component'
 import { CrearCuentaComponent } from './components/crear_cuenta/app.component'
 
 const routes: Routes = [
@@ -20,10 +20,10 @@ const routes: Routes = [
   { path: 'recuperacion-cuenta', component: RecuperacionComponent },
   { path: 'tendero', component: TenderoComponent },
   { path: 'productos', component: ProductosComponent },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

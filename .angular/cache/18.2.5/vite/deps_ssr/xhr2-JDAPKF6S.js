@@ -1,15 +1,24 @@
-import { createRequire } from 'module';const require = createRequire(import.meta.url);
-import {
-  __commonJS,
-  __require
-} from "./chunk-NQ4HTGF6.js";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+import { __commonJS, __require } from "./chunk-NQ4HTGF6.js";
 
 // node_modules/xhr2/lib/xhr2.js
 var require_xhr2 = __commonJS({
   "node_modules/xhr2/lib/xhr2.js"(exports, module) {
-    (function() {
-      var InvalidStateError, NetworkError, ProgressEvent, SecurityError, SyntaxError, XMLHttpRequest, XMLHttpRequestEventTarget, XMLHttpRequestUpload, http, https, os, url;
-      XMLHttpRequestEventTarget = function() {
+    (function () {
+      var InvalidStateError,
+        NetworkError,
+        ProgressEvent,
+        SecurityError,
+        SyntaxError,
+        XMLHttpRequest,
+        XMLHttpRequestEventTarget,
+        XMLHttpRequestUpload,
+        http,
+        https,
+        os,
+        url;
+      XMLHttpRequestEventTarget = function () {
         class XMLHttpRequestEventTarget2 {
           // @private
           // This is an abstract class and should not be instantiated directly.
@@ -59,19 +68,18 @@ var require_xhr2 = __commonJS({
             var eventType, j, len, listener, listeners;
             event.currentTarget = event.target = this;
             eventType = event.type;
-            if (listeners = this._listeners[eventType]) {
+            if ((listeners = this._listeners[eventType])) {
               for (j = 0, len = listeners.length; j < len; j++) {
                 listener = listeners[j];
                 listener.call(this, event);
               }
             }
-            if (listener = this[`on${eventType}`]) {
+            if ((listener = this[`on${eventType}`])) {
               listener.call(this, event);
             }
             return void 0;
           }
         }
-        ;
         XMLHttpRequestEventTarget2.prototype.onloadstart = null;
         XMLHttpRequestEventTarget2.prototype.onprogress = null;
         XMLHttpRequestEventTarget2.prototype.onabort = null;
@@ -85,7 +93,7 @@ var require_xhr2 = __commonJS({
       https = __require("https");
       os = __require("os");
       url = __require("url");
-      XMLHttpRequest = function() {
+      XMLHttpRequest = function () {
         class XMLHttpRequest2 extends XMLHttpRequestEventTarget {
           // Creates a new request.
           // @param {Object} options one or more of the options below
@@ -141,7 +149,9 @@ var require_xhr2 = __commonJS({
             var xhrUrl;
             method = method.toUpperCase();
             if (method in this._restrictedMethods) {
-              throw new SecurityError(`HTTP method ${method} is not allowed in XHR`);
+              throw new SecurityError(
+                `HTTP method ${method} is not allowed in XHR`,
+              );
             }
             xhrUrl = this._parseUrl(url2);
             if (async === void 0) {
@@ -189,7 +199,11 @@ var require_xhr2 = __commonJS({
               throw new InvalidStateError("XHR readyState must be OPENED");
             }
             loweredName = name.toLowerCase();
-            if (this._restrictedHeaders[loweredName] || /^sec\-/.test(loweredName) || /^proxy-/.test(loweredName)) {
+            if (
+              this._restrictedHeaders[loweredName] ||
+              /^sec\-/.test(loweredName) ||
+              /^proxy-/.test(loweredName)
+            ) {
               console.warn(`Refused to set unsafe header "${name}"`);
               return void 0;
             }
@@ -225,7 +239,9 @@ var require_xhr2 = __commonJS({
                 this._sendHttp(data);
                 break;
               default:
-                throw new NetworkError(`Unsupported protocol ${this._url.protocol}`);
+                throw new NetworkError(
+                  `Unsupported protocol ${this._url.protocol}`,
+                );
             }
             return void 0;
           }
@@ -269,7 +285,7 @@ var require_xhr2 = __commonJS({
             if (!this._responseHeaders) {
               return "";
             }
-            lines = function() {
+            lines = function () {
               var ref, results;
               ref = this._responseHeaders;
               results = [];
@@ -285,8 +301,13 @@ var require_xhr2 = __commonJS({
           // @return {undefined} undefined
           // @see http://www.w3.org/TR/XMLHttpRequest/#the-overridemimetype()-method
           overrideMimeType(newMimeType) {
-            if (this.readyState === XMLHttpRequest2.LOADING || this.readyState === XMLHttpRequest2.DONE) {
-              throw new InvalidStateError("overrideMimeType() not allowed in LOADING or DONE");
+            if (
+              this.readyState === XMLHttpRequest2.LOADING ||
+              this.readyState === XMLHttpRequest2.DONE
+            ) {
+              throw new InvalidStateError(
+                "overrideMimeType() not allowed in LOADING or DONE",
+              );
             }
             this._mimeOverride = newMimeType.toLowerCase();
             return void 0;
@@ -369,8 +390,13 @@ var require_xhr2 = __commonJS({
             if (this._sync) {
               throw new Error("Synchronous XHR processing not implemented");
             }
-            if (data != null && (this._method === "GET" || this._method === "HEAD")) {
-              console.warn(`Discarding entity body for ${this._method} requests`);
+            if (
+              data != null &&
+              (this._method === "GET" || this._method === "HEAD")
+            ) {
+              console.warn(
+                `Discarding entity body for ${this._method} requests`,
+              );
               data = null;
             } else {
               data || (data = "");
@@ -401,7 +427,7 @@ var require_xhr2 = __commonJS({
               auth: this._url.auth,
               method: this._method,
               headers: this._headers,
-              agent
+              agent,
             });
             this._request = request;
             if (this.timeout) {
@@ -432,7 +458,8 @@ var require_xhr2 = __commonJS({
             if (this._anonymous) {
               this._headers["Referer"] = "about:blank";
             }
-            (base = this._headers)["User-Agent"] || (base["User-Agent"] = this._userAgent);
+            (base = this._headers)["User-Agent"] ||
+              (base["User-Agent"] = this._userAgent);
             this.upload._finalizeHeaders(this._headers, this._loweredHeaders);
             return void 0;
           }
@@ -482,7 +509,7 @@ var require_xhr2 = __commonJS({
             this.status = this._response.statusCode;
             this.statusText = http.STATUS_CODES[this.status];
             this._parseResponseHeaders(response);
-            if (lengthString = this._responseHeaders["content-length"]) {
+            if ((lengthString = this._responseHeaders["content-length"])) {
               this._totalBytes = parseInt(lengthString);
               this._lengthComputable = true;
             } else {
@@ -608,7 +635,11 @@ var require_xhr2 = __commonJS({
             }
             xhrUrl = url.parse(absoluteUrlString, false, true);
             xhrUrl.hash = null;
-            if (xhrUrl.auth && (typeof user !== "undefined" && user !== null || typeof password !== "undefined" && password !== null)) {
+            if (
+              xhrUrl.auth &&
+              ((typeof user !== "undefined" && user !== null) ||
+                (typeof password !== "undefined" && password !== null))
+            ) {
               index = xhrUrl.auth.indexOf(":");
               if (index === -1) {
                 if (!user) {
@@ -645,12 +676,18 @@ var require_xhr2 = __commonJS({
               if (this._privateHeaders[loweredName]) {
                 continue;
               }
-              if (this._mimeOverride !== null && loweredName === "content-type") {
+              if (
+                this._mimeOverride !== null &&
+                loweredName === "content-type"
+              ) {
                 value = this._mimeOverride;
               }
               this._responseHeaders[loweredName] = value;
             }
-            if (this._mimeOverride !== null && !("content-type" in this._responseHeaders)) {
+            if (
+              this._mimeOverride !== null &&
+              !("content-type" in this._responseHeaders)
+            ) {
               this._responseHeaders["content-type"] = this._mimeOverride;
             }
             return void 0;
@@ -687,7 +724,11 @@ var require_xhr2 = __commonJS({
                 this.responseText = null;
                 arrayBuffer = new ArrayBuffer(buffer.length);
                 view = new Uint8Array(arrayBuffer);
-                for (i = j = 0, ref = buffer.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+                for (
+                  i = j = 0, ref = buffer.length;
+                  0 <= ref ? j < ref : j > ref;
+                  i = 0 <= ref ? ++j : --j
+                ) {
                   view[i] = buffer[i];
                 }
                 this.response = arrayBuffer;
@@ -704,7 +745,9 @@ var require_xhr2 = __commonJS({
           _parseTextResponse(buffer) {
             var e;
             try {
-              this.responseText = buffer.toString(this._parseResponseEncoding());
+              this.responseText = buffer.toString(
+                this._parseResponseEncoding(),
+              );
             } catch (error1) {
               e = error1;
               this.responseText = buffer.toString("binary");
@@ -719,8 +762,8 @@ var require_xhr2 = __commonJS({
           _parseResponseEncoding() {
             var contentType, encoding, match;
             encoding = null;
-            if (contentType = this._responseHeaders["content-type"]) {
-              if (match = /\;\s*charset\=(.*)$/.exec(contentType)) {
+            if ((contentType = this._responseHeaders["content-type"])) {
+              if ((match = /\;\s*charset\=(.*)$/.exec(contentType))) {
                 return match[1];
               }
             }
@@ -753,7 +796,6 @@ var require_xhr2 = __commonJS({
             return target;
           }
         }
-        ;
         XMLHttpRequest2.prototype.onreadystatechange = null;
         XMLHttpRequest2.prototype.readyState = null;
         XMLHttpRequest2.prototype.response = null;
@@ -778,7 +820,7 @@ var require_xhr2 = __commonJS({
         XMLHttpRequest2.prototype._restrictedMethods = {
           CONNECT: true,
           TRACE: true,
-          TRACK: true
+          TRACK: true,
         };
         XMLHttpRequest2.prototype._restrictedHeaders = {
           "accept-charset": true,
@@ -800,11 +842,11 @@ var require_xhr2 = __commonJS({
           trailer: true,
           "transfer-encoding": true,
           upgrade: true,
-          via: true
+          via: true,
         };
         XMLHttpRequest2.prototype._privateHeaders = {
           "set-cookie": true,
-          "set-cookie2": true
+          "set-cookie2": true,
         };
         XMLHttpRequest2.prototype._userAgent = `Mozilla/5.0 (${os.type()} ${os.arch()}) node.js/${process.versions.node} v8/${process.versions.v8}`;
         return XMLHttpRequest2;
@@ -824,8 +866,7 @@ var require_xhr2 = __commonJS({
           super();
         }
       };
-      InvalidStateError = class InvalidStateError extends Error {
-      };
+      InvalidStateError = class InvalidStateError extends Error {};
       XMLHttpRequest.InvalidStateError = InvalidStateError;
       NetworkError = class NetworkError extends Error {
         // @private
@@ -840,7 +881,7 @@ var require_xhr2 = __commonJS({
           super();
         }
       };
-      ProgressEvent = function() {
+      ProgressEvent = function () {
         class ProgressEvent2 {
           // Creates a new event.
           // @param {String} type the event type, e.g. 'readystatechange'; must be
@@ -854,7 +895,6 @@ var require_xhr2 = __commonJS({
             this.total = 0;
           }
         }
-        ;
         ProgressEvent2.prototype.bubbles = false;
         ProgressEvent2.prototype.cancelable = false;
         ProgressEvent2.prototype.target = null;
@@ -864,7 +904,9 @@ var require_xhr2 = __commonJS({
         return ProgressEvent2;
       }.call(this);
       XMLHttpRequest.ProgressEvent = ProgressEvent;
-      XMLHttpRequestUpload = class XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
+      XMLHttpRequestUpload = class XMLHttpRequestUpload extends (
+        XMLHttpRequestEventTarget
+      ) {
         // @private
         // @param {XMLHttpRequest} the XMLHttpRequest that this upload object is
         //   associated with
@@ -902,7 +944,11 @@ var require_xhr2 = __commonJS({
           } else if (data instanceof ArrayBuffer) {
             body = Buffer.alloc(data.byteLength);
             view = new Uint8Array(data);
-            for (i = j = 0, ref = data.byteLength; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+            for (
+              i = j = 0, ref = data.byteLength;
+              0 <= ref ? j < ref : j > ref;
+              i = 0 <= ref ? ++j : --j
+            ) {
               body[i] = view[i];
             }
             this._body = body;
@@ -910,7 +956,11 @@ var require_xhr2 = __commonJS({
             body = Buffer.alloc(data.byteLength);
             offset = data.byteOffset;
             view = new Uint8Array(data.buffer);
-            for (i = k = 0, ref1 = data.byteLength; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+            for (
+              i = k = 0, ref1 = data.byteLength;
+              0 <= ref1 ? k < ref1 : k > ref1;
+              i = 0 <= ref1 ? ++k : --k
+            ) {
               body[i] = view[i + offset];
             }
             this._body = body;
@@ -953,7 +1003,7 @@ var require_xhr2 = __commonJS({
       };
       XMLHttpRequest.XMLHttpRequestUpload = XMLHttpRequestUpload;
     }).call(exports);
-  }
+  },
 });
 export default require_xhr2();
 //# sourceMappingURL=xhr2-JDAPKF6S.js.map
