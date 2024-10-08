@@ -7,6 +7,7 @@ import { NegocioComponent } from './components/negocio/app.component';
 import { RecuperacionComponent } from './components/recuperacion_cuenta/app.component';
 import { TenderoComponent } from './components/tendero/app.component';
 import { ProductosComponent } from './components/productos/app.component';
+import { CrearCuentaComponent } from './components/crear_cuenta/app.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,8 +15,10 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'inventario', component: InventarioComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'crear-cuenta', component: CrearCuentaComponent },
     { path: 'negocio', component: NegocioComponent },
     { path: 'recuperacion-cuenta', component: RecuperacionComponent },
+    { path: 'crear-cuenta', component: CrearCuentaComponent },
     { path: 'tendero', component: TenderoComponent },
     { path: 'productos', component: ProductosComponent },
   ];

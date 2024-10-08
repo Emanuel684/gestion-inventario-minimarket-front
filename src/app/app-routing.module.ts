@@ -8,6 +8,7 @@ import { NegocioComponent } from './components/negocio/app.component';
 import { RecuperacionComponent } from './components/recuperacion_cuenta/app.component';
 import { TenderoComponent } from './components/tendero/app.component';
 import { ProductosComponent } from './components/productos/app.component';
+import { CrearCuentaComponent } from './components/crear_cuenta/app.component'
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'inventario', component: InventarioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'negocio', component: NegocioComponent },
+  { path: 'crear-cuenta', component: CrearCuentaComponent },
   { path: 'recuperacion-cuenta', component: RecuperacionComponent },
   { path: 'tendero', component: TenderoComponent },
   { path: 'productos', component: ProductosComponent },
