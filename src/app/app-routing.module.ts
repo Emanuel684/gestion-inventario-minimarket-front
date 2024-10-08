@@ -7,6 +7,7 @@ import { InventarioComponent } from './components/inventario/app.component';
 import { NegocioComponent } from './components/negocio/app.component';
 import { RecuperacionComponent } from './components/recuperacion_cuenta/app.component';
 import { TenderoComponent } from './components/tendero/app.component';
+import { ProductosComponent } from './components/productos/app.component';
 
 const routes: Routes = [
   { path: 'cliente', component: ClienteComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'negocio', component: NegocioComponent },
   { path: 'recuperacion-cuenta', component: RecuperacionComponent },
   { path: 'tendero', component: TenderoComponent },
+  { path: 'productos', component: ProductosComponent },
 ];
 
 @NgModule({
