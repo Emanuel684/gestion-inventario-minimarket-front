@@ -2,19 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { UserServiceService } from './user-service.service'
 
-@Component({
-  selector: 'crear-cuenta',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-})
-export class CrearCuentaComponent {
-  title = 'Crear Cuenta'
-}
-
-// TODO
-
 interface User {
   id: number
   name: string
@@ -22,12 +9,19 @@ interface User {
 }
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css'],
+  selector: 'crear-cuenta',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
 })
-export class UserComponent implements OnInit {
-  users: User[]
+export class CrearCuentaComponent implements OnInit {
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.')
+  // }
+  // title = 'Crear Cuenta'
+  title = 'Crear Cuenta'
+  users: User[] | undefined
 
   newUser: User = {
     id: 0,
@@ -58,7 +52,7 @@ export class UserComponent implements OnInit {
         console.log('User created:', response)
         // Refresh the user list after creating a new user
         this.fetchUsers()
-        this.resetNewUser()
+        // this.resetNewUser()
       },
       (error) => {
         console.error(error)
