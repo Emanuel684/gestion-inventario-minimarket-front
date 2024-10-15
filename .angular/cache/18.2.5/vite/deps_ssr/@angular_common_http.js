@@ -1,5 +1,4 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   FetchBackend,
   HTTP_INTERCEPTORS,
@@ -38,7 +37,7 @@ import {
   withJsonpSupport,
   withNoXsrfProtection,
   withRequestsMadeViaParent,
-  withXsrfConfiguration,
+  withXsrfConfiguration
 } from "./chunk-CSLD2MRC.js";
 import "./chunk-5JKYDCKR.js";
 import "./chunk-NQ4HTGF6.js";
@@ -81,6 +80,6 @@ export {
   HttpInterceptorHandler as ɵHttpInterceptingHandler,
   HttpInterceptorHandler as ɵHttpInterceptorHandler,
   REQUESTS_CONTRIBUTE_TO_STABILITY as ɵREQUESTS_CONTRIBUTE_TO_STABILITY,
-  withHttpTransferCache as ɵwithHttpTransferCache,
+  withHttpTransferCache as ɵwithHttpTransferCache
 };
 //# sourceMappingURL=@angular_common_http.js.map

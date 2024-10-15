@@ -1,5 +1,4 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   ALLOW_MULTIPLE_PLATFORMS,
   ANIMATION_MODULE_TYPE,
@@ -463,7 +462,7 @@ import {
   ɵɵtwoWayProperty,
   ɵɵvalidateIframeAttribute,
   ɵɵviewQuery,
-  ɵɵviewQuerySignal,
+  ɵɵviewQuerySignal
 } from "./chunk-5JKYDCKR.js";
 import "./chunk-NQ4HTGF6.js";
 export {
@@ -931,6 +930,6 @@ export {
   ɵɵtwoWayProperty,
   ɵɵvalidateIframeAttribute,
   ɵɵviewQuery,
-  ɵɵviewQuerySignal,
+  ɵɵviewQuerySignal
 };
 //# sourceMappingURL=@angular_core.js.map

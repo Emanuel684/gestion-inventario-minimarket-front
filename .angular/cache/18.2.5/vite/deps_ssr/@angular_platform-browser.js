@@ -1,5 +1,4 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   BrowserDomAdapter,
   BrowserGetTestability,
@@ -36,9 +35,11 @@ import {
   withEventReplay,
   withHttpTransferCacheOptions,
   withI18nSupport,
-  withNoHttpTransferCache,
+  withNoHttpTransferCache
 } from "./chunk-XJXT7ETF.js";
-import { getDOM } from "./chunk-CSLD2MRC.js";
+import {
+  getDOM
+} from "./chunk-CSLD2MRC.js";
 import "./chunk-5JKYDCKR.js";
 import "./chunk-NQ4HTGF6.js";
 export {
@@ -78,6 +79,6 @@ export {
   KeyEventsPlugin as ɵKeyEventsPlugin,
   SharedStylesHost as ɵSharedStylesHost,
   getDOM as ɵgetDOM,
-  initDomAdapter as ɵinitDomAdapter,
+  initDomAdapter as ɵinitDomAdapter
 };
 //# sourceMappingURL=@angular_platform-browser.js.map
