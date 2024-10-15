@@ -74,8 +74,6 @@
 //   }
 // }
 
-
-
 import { Component, OnInit } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { ConfigService } from './user-service.service'
@@ -99,8 +97,8 @@ export class CrearCuentaComponent implements OnInit {
   // }
   // title = 'Crear Cuenta'
   title = 'Crear Cuenta'
-  
-  data: any;
+
+  data: any
 
   constructor(private dataService: ConfigService) {}
 
@@ -110,6 +108,4 @@ export class CrearCuentaComponent implements OnInit {
     //   console.log(this.data);
     // });
   }
-  
 }
-
