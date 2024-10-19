@@ -11,6 +11,7 @@ import { RecuperacionComponent } from './components/recuperacion_cuenta/app.comp
 import { TenderoComponent } from './components/tendero/app.component'
 import { ProductosComponent } from './components/productos/app.component'
 import { CrearCuentaComponent } from './components/crear_cuenta/app.component'
+import { FormsModule } from '@angular/forms'
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   providers: [provideHttpClient()],
-  imports: [RouterModule.forRoot(routes), BrowserModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule],
   exports: [RouterModule],
   bootstrap: [RouterModule],
 })

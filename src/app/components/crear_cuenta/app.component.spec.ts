@@ -1,29 +1,23 @@
-import { TestBed } from '@angular/core/testing'
-import { CrearCuentaComponent } from './app.component'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { CrearCuentaComponent } from './app.component';
 
 describe('CrearCuentaComponent', () => {
+  let component: CrearCuentaComponent;
+  let fixture: ComponentFixture<CrearCuentaComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrearCuentaComponent],
-    }).compileComponents()
-  })
+      imports: [CrearCuentaComponent]
+    })
+    .compileComponents();
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(CrearCuentaComponent)
-    const app = fixture.componentInstance
-    expect(app).toBeTruthy()
-  })
+    fixture = TestBed.createComponent(CrearCuentaComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  it(`should have the 'my-app' title`, () => {
-    const fixture = TestBed.createComponent(CrearCuentaComponent)
-    const app = fixture.componentInstance
-    expect(app.title).toEqual('my-app')
-  })
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(CrearCuentaComponent)
-    fixture.detectChanges()
-    const compiled = fixture.nativeElement as HTMLElement
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, my-app')
-  })
-})
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

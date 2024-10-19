@@ -34,11 +34,11 @@ export class ConfigService {
 
   // constructor(private http: HttpClient) {}
   constructor() {
-    console.log('this', 'constructor')
+    console.log('this')
   }
 
   fetchUsers() {
-    console.log('this', 'fetchUsers')
+    console.log('this')
     return []
   }
 

@@ -1,111 +1,55 @@
-// import { Component, OnInit } from '@angular/core'
-// import { RouterOutlet } from '@angular/router'
-// import { UserServiceService } from './user-service.service'
-
-// interface User {
-//   id: number
-//   name: string
-//   email: string
-// }
-
-// @Component({
-//   selector: 'crear-cuenta',
-//   standalone: true,
-//   imports: [RouterOutlet],
-//   templateUrl: './app.component.html',
-//   styleUrl: './app.component.css',
-// })
-// export class CrearCuentaComponent implements OnInit {
-//   // ngOnInit(): void {
-//   //   throw new Error('Method not implemented.')
-//   // }
-//   // title = 'Crear Cuenta'
-//   title = 'Crear Cuenta'
-//   users: User[] | undefined
-
-//   newUser: User = {
-//     id: 0,
-//     name: '',
-//     email: '',
-//   }
-
-//   constructor(private userService: UserServiceService) {}
-
-//   ngOnInit() {
-//     this.fetchUsers()
-//   }
-
-//   fetchUsers() {
-//     this.userService.fetchUsers().subscribe(
-//       (response) => {
-//         this.users = response
-//       },
-//       (error) => {
-//         console.error(error)
-//       },
-//     )
-//   }
-
-//   createUser() {
-//     this.userService.createUser(this.newUser).subscribe(
-//       (response) => {
-//         console.log('User created:', response)
-//         // Refresh the user list after creating a new user
-//         this.fetchUsers()
-//         // this.resetNewUser()
-//       },
-//       (error) => {
-//         console.error(error)
-//       },
-//     )
-//   }
-
-//   deleteUser(userId: number) {
-//     this.userService.deleteUser(userId).subscribe(
-//       () => {
-//         console.log('User deleted')
-//         // Refresh the user list after deleting a user
-//         this.fetchUsers()
-//       },
-//       (error) => {
-//         console.error(error)
-//       },
-//     )
-//   }
-// }
-
-import { Component, OnInit } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
-import { ConfigService } from './user-service.service'
-
-interface User {
-  id: number
-  name: string
-  email: string
-}
+import { CommonModule, formatCurrency } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+// import { ToastrService } from 'ngx-toastr';
+// import { ContactService } from '../../../services/contact.service';
+// import { LoginService } from '../../../services/login.service';
+// import { UserProfileService } from '../../../services/user-profile.service';
 
 @Component({
-  selector: 'crear-cuenta',
+  selector: 'app-contact-us',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.css'
 })
 export class CrearCuentaComponent implements OnInit {
-  // ngOnInit(): void {
-  //   throw new Error('Method not implemented.')
-  // }
-  // title = 'Crear Cuenta'
-  title = 'Crear Cuenta'
+  contactForm!: FormGroup;
+  userId=0;
+  constructor(
+    private fb: FormBuilder,
+    // private contactService: ContactService,
+    // private toastrService: ToastrService,
+    // private loginService: LoginService,
+    // private userService:UserProfileService
+  ) {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
+    });
+  }
 
-  data: any
+  ngOnInit(): void {
+    // this.userId = this.loginService.userId;
+    
+    
+  }
 
-  constructor(private dataService: ConfigService) {}
-
-  ngOnInit() {
-    // this.dataService.getData().subscribe((response) => {
-    //   this.data = response;
-    //   console.log(this.data);
-    // });
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value)
+      // this.contactService.sendMessage(this.contactForm.value).subscribe(
+      //   (response) => {
+      //     this.toastrService.success('Message sent successfully!');
+      //     this.contactForm.reset(); // Reset form after submission
+      //   },
+      //   (error) => {
+      //     this.toastrService.error('Error sending message. Please try again.');
+      //   }
+      // );
+    }
   }
 }

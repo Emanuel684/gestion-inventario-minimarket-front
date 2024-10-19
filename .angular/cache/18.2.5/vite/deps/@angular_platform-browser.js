@@ -34,10 +34,12 @@ import {
   withEventReplay,
   withHttpTransferCacheOptions,
   withI18nSupport,
-  withNoHttpTransferCache,
-} from "./chunk-AM4JMA66.js";
-import { getDOM } from "./chunk-CSUDYLKL.js";
-import "./chunk-ZDDPHS7B.js";
+  withNoHttpTransferCache
+} from "./chunk-LWKVQYRO.js";
+import {
+  getDOM
+} from "./chunk-6LWT3CD6.js";
+import "./chunk-DWZ2RJXY.js";
 export {
   BrowserModule,
   By,
@@ -75,6 +77,6 @@ export {
   KeyEventsPlugin as ɵKeyEventsPlugin,
   SharedStylesHost as ɵSharedStylesHost,
   getDOM as ɵgetDOM,
-  initDomAdapter as ɵinitDomAdapter,
+  initDomAdapter as ɵinitDomAdapter
 };
 //# sourceMappingURL=@angular_platform-browser.js.map
