@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router'
-import { HomeComponent } from './components/home/app.component'
-import { LoginComponent } from './components/login/app.component'
-import { ClientesComponent } from './components/clientes/app.component'
-import { InventarioComponent } from './components/inventario/app.component'
-import { NegocioComponent } from './components/negocio/app.component'
-import { RecuperacionComponent } from './components/recuperacion_cuenta/app.component'
-import { TenderoComponent } from './components/tendero/app.component'
-import { ProductosComponent } from './components/productos/app.component'
-import { CrearCuentaComponent } from './components/crear_cuenta/app.component'
+import { HomeComponent } from './components/home/home.component'
+import { LoginComponent } from './components/login/login.component'
+import { ClientesComponent } from './components/clientes/clientes.component'
+import { InventarioComponent } from './components/inventario/inventario.component'
+import { NegocioComponent } from './components/negocio/negocio.component'
+import { RecuperacionComponent } from './components/recuperacion_cuenta/recuperacion-cuenta.component'
+import { TenderoComponent } from './components/tendero/tendero.component'
+import { ProductosComponent } from './components/productos/productos.component'
+import { CrearCuentaComponent } from './components/crear_cuenta/crear-cuenta.component'
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
