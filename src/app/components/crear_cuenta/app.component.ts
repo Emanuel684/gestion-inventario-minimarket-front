@@ -1,7 +1,13 @@
-import { CommonModule, formatCurrency } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { CommonModule, formatCurrency } from '@angular/common'
+import { Component, OnInit } from '@angular/core'
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms'
+import { RouterModule } from '@angular/router'
 // import { ToastrService } from 'ngx-toastr';
 // import { ContactService } from '../../../services/contact.service';
 // import { LoginService } from '../../../services/login.service';
@@ -12,11 +18,11 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class CrearCuentaComponent implements OnInit {
-  contactForm!: FormGroup;
-  userId=0;
+  contactForm!: FormGroup
+  userId = 0
   constructor(
     private fb: FormBuilder,
     // private contactService: ContactService,
@@ -29,13 +35,11 @@ export class CrearCuentaComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required],
-    });
+    })
   }
 
   ngOnInit(): void {
     // this.userId = this.loginService.userId;
-    
-    
   }
 
   onSubmit() {
