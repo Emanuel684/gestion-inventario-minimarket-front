@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms'
   imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  host: { ngSkipHydration: 'true' },
 })
 export class ClientesComponent {
   title = 'Cliente'

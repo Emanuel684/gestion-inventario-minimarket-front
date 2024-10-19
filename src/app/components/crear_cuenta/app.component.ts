@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router'
   imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  host: { ngSkipHydration: 'true' },
 })
 export class CrearCuentaComponent implements OnInit {
   contactForm!: FormGroup
@@ -39,6 +40,7 @@ export class CrearCuentaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('oninit')
     // this.userId = this.loginService.userId;
   }
 
