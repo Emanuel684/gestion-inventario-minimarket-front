@@ -10,6 +10,7 @@ import {
 import { RouterModule } from '@angular/router'
 // import { ToastrService } from 'ngx-toastr';
 // import { ContactService } from '../../../services/contact.service';
+import { CategoryService } from '../../services/category.service'
 // import { LoginService } from '../../../services/login.service';
 // import { UserProfileService } from '../../../services/user-profile.service';
 
@@ -26,6 +27,7 @@ export class CrearCuentaComponent implements OnInit {
   userId = 0
   constructor(
     private fb: FormBuilder,
+    private categoryService: CategoryService,
     // private contactService: ContactService,
     // private toastrService: ToastrService,
     // private loginService: LoginService,
@@ -47,6 +49,7 @@ export class CrearCuentaComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value)
+      this.categoryService.getCategories()
       // this.contactService.sendMessage(this.contactForm.value).subscribe(
       //   (response) => {
       //     this.toastrService.success('Message sent successfully!');

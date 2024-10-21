@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { HttpClientModule, provideHttpClient } from '@angular/common/http'
+import { provideHttpClient } from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './components/home/home.component'
 import { LoginComponent } from './components/login/login.component'
