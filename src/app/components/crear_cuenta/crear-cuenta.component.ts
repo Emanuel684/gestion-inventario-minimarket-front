@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router'
 // import { ToastrService } from 'ngx-toastr';
 // import { ContactService } from '../../../services/contact.service';
 import { CategoryService } from '../../services/category.service'
-// import { LoginService } from '../../../services/login.service';
+import { UsuariosService } from '../../services/usuarios.services'
 // import { UserProfileService } from '../../../services/user-profile.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class CrearCuentaComponent implements OnInit {
     private categoryService: CategoryService,
     // private contactService: ContactService,
     // private toastrService: ToastrService,
-    // private loginService: LoginService,
+    private loginService: UsuariosService,
     // private userService:UserProfileService
   ) {
     this.contactForm = this.fb.group({
@@ -49,7 +49,9 @@ export class CrearCuentaComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value)
-      this.categoryService.getCategories()
+      console.log('onSubmit: ')
+      this.loginService.postUsuario()
+      // console.log('result: ', result)
       // this.contactService.sendMessage(this.contactForm.value).subscribe(
       //   (response) => {
       //     this.toastrService.success('Message sent successfully!');
