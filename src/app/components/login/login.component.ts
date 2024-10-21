@@ -9,9 +9,7 @@ import {
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 // import { ToastrService } from 'ngx-toastr';
-// import { ContactService } from '../../../services/contact.service';
-// import { LoginService } from '../../../services/login.service';
-// import { UserProfileService } from '../../../services/user-profile.service';
+import { UsuariosService } from '../../services/usuarios.services'
 
 @Component({
   selector: 'app-login',
@@ -27,16 +25,11 @@ export class LoginComponent implements OnInit {
   userId = 0
   constructor(
     private fb: FormBuilder,
-    // private contactService: ContactService,
-    // private toastrService: ToastrService,
-    // private loginService: LoginService,
-    // private userService:UserProfileService
+    private usuariosService: UsuariosService,
   ) {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
     })
   }
 
@@ -48,6 +41,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value)
+      this.usuariosService.getUsuario()
       // this.contactService.sendMessage(this.contactForm.value).subscribe(
       //   (response) => {
       //     this.toastrService.success('Message sent successfully!');

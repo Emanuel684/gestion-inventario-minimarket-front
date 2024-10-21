@@ -1,11 +1,4 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
 
 <style>
   h1 {
@@ -154,7 +147,7 @@
   <div class="container py-3">
     <body class="text-center">
       <main class="form-signin">
-        <form>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
           <img
             class="mb-4"
             src="https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png"
@@ -168,19 +161,28 @@
             <input
               type="email"
               class="form-control"
-              id="floatingInput"
+              id="email"
+              formControlName="email"
               placeholder="name@example.com"
             />
             <label for="floatingInput">Email</label>
+            <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)" class="text-danger">
+                <small *ngIf="contactForm.get('email')?.errors?.['required']">El correo es requerido.</small>
+            </div>
+
           </div>
           <div class="form-floating">
             <input
               type="password"
               class="form-control"
-              id="floatingPassword"
+              id="password"
+              formControlName="password"
               placeholder="Password"
             />
             <label for="floatingPassword">Password</label>
+            <div *ngIf="contactForm.get('password')?.invalid && (contactForm.get('password')?.touched || contactForm.get('password')?.dirty)" class="text-danger">
+                <small *ngIf="contactForm.get('password')?.errors?.['required']">La contraseña es requerida.</small>
+            </div>
           </div>
 
           <div class="checkbox mb-3">
@@ -200,12 +202,13 @@
               >
             </label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="contactForm.invalid">
             Iniciar sesion
           </button>
         </form>
       </main>
     </body>
+
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
         <div class="col-12 col-md">
@@ -301,15 +304,8 @@
         </div>
       </div>
     </footer>
+
   </div>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet />

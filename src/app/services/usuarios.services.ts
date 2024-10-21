@@ -51,9 +51,43 @@ export class UsuariosService {
     return result
   }
 
-  postTienda(): Observable<CourseCategory[]> {
-    var complemento: String = ''
-    return this.http.get<CourseCategory[]>(`${this.baseUrl}/${complemento}`)
+  getUsuario() {
+    console.log('getUsuario')
+    var complemento: String = 'iniciar-sesion'
+    // var bodyU = {
+    //   ciudad: 'Medellín',
+    //   email: 'emanuelacag@gmail.com',
+    //   fecha_actualizacion: '1966-04-28T00:00:00',
+    //   fecha_creacion: '1966-04-28T00:00:00',
+    //   id: '662d0d325363bbc93a0c0295',
+    //   nombre_completo: 'Emanuel Acevedo',
+    //   pais: 'Colombia',
+    //   tipo: 'cliente',
+    // }
+    var email = 'emanuelacag@gmail.com'
+    console.log(
+      '`${this.baseUrl}/${complemento}`: ',
+      `${this.baseUrl}/${complemento}/${email}`,
+    )
+    var result = this.http
+      .get(`${this.baseUrl}/${complemento}/${email}`)
+      .pipe(
+        catchError((error: any, caught: Observable<any>): Observable<any> => {
+          // this.errorMessage = error.message;
+          console.error('There was an error!', error)
+
+          // after handling error, return a new observable
+          // that doesn't emit any values and completes
+          return of()
+        }),
+      )
+      .subscribe((data) => {
+        // this.postId = data.id;
+        console.log('data.id: ', data)
+      })
+
+    console.log('result: ', result)
+    return result
   }
   putTienda(): Observable<CourseCategory[]> {
     var complemento: String = ''
