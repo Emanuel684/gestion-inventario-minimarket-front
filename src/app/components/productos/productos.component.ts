@@ -8,8 +8,7 @@ import {
   Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-// import { ToastrService } from 'ngx-toastr';
-import { UsuariosService } from '../../services/usuarios.services'
+import { ProductosService } from '../../services/productos.services'
 
 @Component({
   selector: 'app-productos',
@@ -23,9 +22,25 @@ export class ProductosComponent implements OnInit {
   title = 'Prodcutos'
   contactForm!: FormGroup
   userId = 0
+  productos: any = {
+    msg: 'Se obtuvo el resultado exitosamente.',
+    success: true,
+    data: [
+      {
+        id: '6717c43ef963e95aa4789246',
+        nombre: 'Leche',
+        tipo: 'Lacteo',
+        sub_tipo: 'Leche',
+        precio: '5500',
+        fecha_creacion: '2024-10-22T00:00:00',
+        fecha_actualizacion: '2024-10-22T00:00:00',
+      },
+    ],
+  }
+
   constructor(
     private fb: FormBuilder,
-    private usuariosService: UsuariosService,
+    private productosService: ProductosService,
   ) {
     this.contactForm = this.fb.group({
       password: ['', Validators.required],
@@ -34,23 +49,26 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('oninit')
+    console.log('oninit Productos')
+    var result = this.productosService.getAllProductos()
+    this.productos = result
+    console.log('result Productos: ', result)
     // this.userId = this.loginService.userId;
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
-      this.usuariosService.getUsuario()
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
-    }
-  }
+  // onSubmit() {
+  //   if (this.contactForm.valid) {
+  //     console.log(this.contactForm.value)
+  //     this.usuariosService.getUsuario()
+  //     // this.contactService.sendMessage(this.contactForm.value).subscribe(
+  //     //   (response) => {
+  //     //     this.toastrService.success('Message sent successfully!');
+  //     //     this.contactForm.reset(); // Reset form after submission
+  //     //   },
+  //     //   (error) => {
+  //     //     this.toastrService.error('Error sending message. Please try again.');
+  //     //   }
+  //     // );
+  //   }
+  // }
 }

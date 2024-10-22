@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { catchError, Observable, of } from 'rxjs'
 import { environment } from '../../environments/environment'
 import { CourseCategory } from '../models/category'
-import { url } from 'inspector'
+// import { url } from 'inspector'
 
 @Injectable({
   providedIn: 'root',
@@ -77,6 +77,7 @@ export class UsuariosService {
     console.log('response: ', response)
     return response
   }
+
   putTienda(): Observable<CourseCategory[]> {
     var complemento: String = ''
     return this.http.get<CourseCategory[]>(`${this.baseUrl}/${complemento}`)
