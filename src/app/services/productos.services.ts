@@ -16,7 +16,7 @@ export class ProductosService {
     var complemento: String = 'productos-registrados'
     var response
 
-    var result = this.http
+    this.http
       .get(`${this.baseUrl}/${complemento}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -30,11 +30,11 @@ export class ProductosService {
       )
       .subscribe((data) => {
         response = data
-        console.log('data: ', data)
+        // console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
+    // console.log('result: ', result)
+    // console.log('response: ', response)
     return response
   }
 

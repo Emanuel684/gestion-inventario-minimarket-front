@@ -146,7 +146,6 @@
     
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
-
           @for (
             item of productos?.data;
             track item.nombre
@@ -170,7 +169,6 @@
                   <ul class="list-unstyled mt-3 mb-4">
                     <li>Tipo: {{item.tipo}}</li>
                     <li>Subtipo: {{item.sub_tipo}}</li>
-                    <!-- <li>Cantidad disponible: 10</li> -->
                   </ul>
                   <button type="button" class="w-100 btn btn-lg btn-primary">
                     Comprar
@@ -179,37 +177,6 @@
               </div>
             </div>
           }
-      
-        
-      <!-- <div class="col card">
-        <div>
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-          <img
-          class="mb-2"
-          src="https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png"
-          alt=""
-        />
-      </div>
-          <div class="card-header py-3 text-bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Leche</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $5.500<small class="text-body-secondary fw-light">/Unidad</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Tipo: Lacteo</li>
-              <li>Subtipo: Leche</li>
-              <li>Cantidad disponible: 10</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">
-              Comprar
-            </button>
-          </div>
-        </div>
-      </div> -->
-
-
 
     </div>
 

@@ -1,15 +1,9 @@
-import { CommonModule, formatCurrency } from '@angular/common'
+import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-// import { ToastrService } from 'ngx-toastr';
 import { UsuariosService } from '../../services/usuarios.services'
+import { TiendasService } from '../../services/tiendas.services'
 
 @Component({
   selector: 'app-tendero',
@@ -21,36 +15,18 @@ import { UsuariosService } from '../../services/usuarios.services'
 })
 export class TenderoComponent implements OnInit {
   title = 'Tendero'
-  contactForm!: FormGroup
-  userId = 0
+
   constructor(
-    private fb: FormBuilder,
     private usuariosService: UsuariosService,
-  ) {
-    this.contactForm = this.fb.group({
-      password: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    })
-  }
+    private tiendasService: TiendasService,
+  ) {}
 
   ngOnInit(): void {
     console.log('oninit')
+    var result_usuario = this.usuariosService.getTenderoInfo()
+    var result_tienda = this.tiendasService.getTiendaInfo()
+    console.log('result usuario', result_usuario)
+    console.log('result tienda', result_tienda)
     // this.userId = this.loginService.userId;
-  }
-
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
-      this.usuariosService.getUsuario()
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
-    }
   }
 }
