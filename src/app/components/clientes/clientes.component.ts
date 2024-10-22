@@ -1,5 +1,6 @@
-import { CommonModule, 
-  // formatCurrency 
+import {
+  CommonModule,
+  // formatCurrency
 } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import {
@@ -26,16 +27,40 @@ import { UsuariosService } from '../../services/usuarios.services'
 })
 export class ClientesComponent implements OnInit {
   title = 'Cliente'
-  
-  constructor(
-    private usuariosService: UsuariosService,
-  ) {
-    
+  respuesta_clientes: any = {
+    msg: 'Se obtuvo el resultado exitosamente.',
+    success: true,
+    data: [
+      {
+        id: '6716b4727e2682dc485954a1',
+        nombre_completo: 'Emanuel Acevedo',
+        email: 'emanuelacag@gmail.com',
+        password: 'Ytpgs9m1!',
+        pais: 'Colombia',
+        ciudad: 'Medellín',
+        tipo: 'cliente',
+        fecha_creacion: '1966-04-28T00:00:00',
+        fecha_actualizacion: '1966-04-28T00:00:00',
+      },
+      {
+        id: '6717c09a4f00c9c785619f29',
+        nombre_completo: 'Carlos Acevedo',
+        email: 'carlosacag@gmail.com',
+        password: 'Ytpgs9m2!',
+        pais: 'Colombia',
+        ciudad: 'Medellín',
+        tipo: 'tendero',
+        fecha_creacion: '2024-10-22T00:00:00',
+        fecha_actualizacion: '2024-10-22T00:00:00',
+      },
+    ],
   }
+
+  constructor(private usuariosService: UsuariosService) {}
 
   ngOnInit(): void {
     console.log('oninit')
-    var result = this.usuariosService.getUsuariosTienda()
+    this.respuesta_clientes = this.usuariosService.getUsuariosTienda()
     // this.userId = this.loginService.userId;
   }
 

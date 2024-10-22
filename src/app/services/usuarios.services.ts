@@ -105,8 +105,8 @@ export class UsuariosService {
     return response
   }
 
-  getUsuariosTienda(){
-    var complemento: String = 'iniciar-sesion'
+  getUsuariosTienda() {
+    var complemento: String = 'all-usuarios'
     var email: String = 'carlosacag@gmail.com'
     var response
 
@@ -124,13 +124,12 @@ export class UsuariosService {
       )
       .subscribe((data) => {
         response = data
-        console.log('data: ', data)
+        console.log('data getUsuariosTienda: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
+    console.log('result getUsuariosTienda: ', result)
+    console.log('response getUsuariosTienda: ', response)
     return response
-
   }
 
   putTienda(): Observable<CourseCategory[]> {
