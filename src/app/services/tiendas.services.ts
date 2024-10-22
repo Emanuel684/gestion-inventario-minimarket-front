@@ -13,8 +13,8 @@ export class TiendasService {
   constructor(private http: HttpClient) {}
 
   getTiendaInfo() {
-    var complemento: String = 'iniciar-sesion'
-    var email = 'carlosacag@gmail.com'
+    var complemento: String = 'tienda-identificador'
+    var email = '6717c09a4f00c9c785619f29'
     var response
 
     var result = this.http
