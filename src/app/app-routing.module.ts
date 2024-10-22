@@ -12,6 +12,12 @@ import { TenderoComponent } from './components/tendero/tendero.component'
 import { ProductosComponent } from './components/productos/productos.component'
 import { CrearCuentaComponent } from './components/crear_cuenta/crear-cuenta.component'
 import { FormsModule } from '@angular/forms'
+import { TerminosComponent } from './components/terminos/terminos.component'
+import { RecursosComponent } from './components/recursos/recursos.component'
+import { PrivacidadComponent } from './components/privacidad/privacidad.component'
+import { EquipoComponent } from './components/equipo/equipo.component'
+import { CosasInteresantesComponent } from './components/cosas_interesantes/cosas-interesantes.component'
+import { ContactanosComponent } from './components/contactanos/contactanos.component'
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -23,6 +29,12 @@ const routes: Routes = [
   { path: 'recuperacion-cuenta', component: RecuperacionComponent },
   { path: 'tendero', component: TenderoComponent },
   { path: 'productos', component: ProductosComponent },
+  { path: 'terminos', component: TerminosComponent },
+  { path: 'recursos', component: RecursosComponent },
+  { path: 'privacidad', component: PrivacidadComponent },
+  { path: 'equipo', component: EquipoComponent },
+  { path: 'cosas-interesantes', component: CosasInteresantesComponent },
+  { path: 'contactanos', component: ContactanosComponent },
 ]
 
 @NgModule({

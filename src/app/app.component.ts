@@ -6,9 +6,8 @@ import { RouterOutlet } from '@angular/router'
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
   host: { ngSkipHydration: 'true' },
 })
 export class AppComponent {
-  title = 'my-app'
+  title = 'Root'
 }

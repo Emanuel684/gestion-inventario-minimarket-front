@@ -8,6 +8,12 @@ import { RecuperacionComponent } from './components/recuperacion_cuenta/recupera
 import { TenderoComponent } from './components/tendero/tendero.component'
 import { ProductosComponent } from './components/productos/productos.component'
 import { CrearCuentaComponent } from './components/crear_cuenta/crear-cuenta.component'
+import { TerminosComponent } from './components/terminos/terminos.component'
+import { RecursosComponent } from './components/recursos/recursos.component'
+import { PrivacidadComponent } from './components/privacidad/privacidad.component'
+import { EquipoComponent } from './components/equipo/equipo.component'
+import { CosasInteresantesComponent } from './components/cosas_interesantes/cosas-interesantes.component'
+import { ContactanosComponent } from './components/contactanos/contactanos.component'
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,4 +27,10 @@ export const routes: Routes = [
   { path: 'crear-cuenta', component: CrearCuentaComponent },
   { path: 'tendero', component: TenderoComponent },
   { path: 'productos', component: ProductosComponent },
+  { path: 'terminos', component: TerminosComponent },
+  { path: 'recursos', component: RecursosComponent },
+  { path: 'privacidad', component: PrivacidadComponent },
+  { path: 'equipo', component: EquipoComponent },
+  { path: 'cosas-interesantes', component: CosasInteresantesComponent },
+  { path: 'contactanos', component: ContactanosComponent },
 ]

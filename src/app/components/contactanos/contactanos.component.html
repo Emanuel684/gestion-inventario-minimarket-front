@@ -144,50 +144,128 @@
 <main class="main">
   <div class="container py-3">
     <body>
-
       <div class="container contact-us-container">
-        <h2>Contact Us</h2>
-        <p class="contact-subtitle">We'd love to hear from you! Reach out to us using the form below or through any of our contact methods.</p>
-        
+        <h2>Contactanos</h2>
+        <p class="contact-subtitle">
+          We'd love to hear from you! Reach out to us using the form below or
+          through any of our contact methods.
+        </p>
+
         <div class="row">
-            <!-- Contact Form -->
-            <div class="col-lg-6">
-                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nombre Completo</label>
-                        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter your name">
-                        <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.touched || contactForm.get('name')?.dirty)" class="text-danger">
-                            <small *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</small>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter your email">
-                        <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)" class="text-danger">
-                            <small *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</small>
-                            <small *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</small>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Contraseña</label>
-                        <input type="text" formControlName="subject" class="form-control" id="subject" placeholder="Enter subject">
-                        <div *ngIf="contactForm.get('subject')?.invalid && (contactForm.get('subject')?.touched || contactForm.get('subject')?.dirty)" class="text-danger">
-                            <small *ngIf="contactForm.get('subject')?.errors?.['required']">Contraseña requerida.</small>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Repetir Contraseña</label>
-                        <textarea formControlName="message" class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
-                        <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.touched || contactForm.get('message')?.dirty)" class="text-danger">
-                            <small *ngIf="contactForm.get('message')?.errors?.['required']">Contraseña requerida.</small>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
-                </form>
-            </div>
-      
-            <!-- Contact Details
+          <!-- Contact Form -->
+          <div class="col-lg-6">
+            <form
+              [formGroup]="contactForm"
+              (ngSubmit)="onSubmit()"
+              class="contact-form"
+            >
+              <div class="mb-3">
+                <label for="name" class="form-label">Nombre Completo</label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Enter your name"
+                />
+                <div
+                  *ngIf="
+                    contactForm.get('name')?.invalid &&
+                    (contactForm.get('name')?.touched ||
+                      contactForm.get('name')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  <small *ngIf="contactForm.get('name')?.errors?.['required']"
+                    >Name is required.</small
+                  >
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your email"
+                />
+                <div
+                  *ngIf="
+                    contactForm.get('email')?.invalid &&
+                    (contactForm.get('email')?.touched ||
+                      contactForm.get('email')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  <small *ngIf="contactForm.get('email')?.errors?.['required']"
+                    >Email is required.</small
+                  >
+                  <small *ngIf="contactForm.get('email')?.errors?.['email']"
+                    >Invalid email format.</small
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Contraseña</label>
+                <input
+                  type="text"
+                  formControlName="subject"
+                  class="form-control"
+                  id="subject"
+                  placeholder="Enter subject"
+                />
+                <div
+                  *ngIf="
+                    contactForm.get('subject')?.invalid &&
+                    (contactForm.get('subject')?.touched ||
+                      contactForm.get('subject')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  <small
+                    *ngIf="contactForm.get('subject')?.errors?.['required']"
+                    >Contraseña requerida.</small
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label"
+                  >Repetir Contraseña</label
+                >
+                <textarea
+                  formControlName="message"
+                  class="form-control"
+                  id="message"
+                  rows="5"
+                  placeholder="Enter your message"
+                ></textarea>
+                <div
+                  *ngIf="
+                    contactForm.get('message')?.invalid &&
+                    (contactForm.get('message')?.touched ||
+                      contactForm.get('message')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  <small
+                    *ngIf="contactForm.get('message')?.errors?.['required']"
+                    >Contraseña requerida.</small
+                  >
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="contactForm.invalid"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Details
             <div class="col-lg-6">
                 <div class="contact-details">
                     <div class="contact-info">
@@ -234,80 +312,46 @@
           <h5>Características</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#"
+              <a
+                class="link-secondary text-decoration-none"
+                href="cosas-interesantes"
                 >Cosas Interesantes</a
               >
             </li>
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Random feature</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Team feature</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Stuff for developers</a
-        >
-      </li> -->
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Another one</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Last time</a
-        >
-      </li> -->
           </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Recursos</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#"
+              <a class="link-secondary text-decoration-none" href="recursos"
                 >Recursos</a
               >
             </li>
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Resource name</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Another resource</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Final resource</a
-        >
-      </li> -->
+            <li class="mb-1">
+              <a class="link-secondary text-decoration-none" href="contactanos"
+                >Contactanos</a
+              >
+            </li>
           </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Acerca de</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">Equipo</a>
+              <a class="link-secondary text-decoration-none" href="equipo"
+                >Equipo</a
+              >
             </li>
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Locations</a
-        >
-      </li> -->
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#"
+              <a class="link-secondary text-decoration-none" href="privacidad"
                 >Privacidad</a
               >
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">Terminos</a>
+              <a class="link-secondary text-decoration-none" href="terminos"
+                >Terminos</a
+              >
             </li>
           </ul>
         </div>

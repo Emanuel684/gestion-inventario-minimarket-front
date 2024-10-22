@@ -1,5 +1,3 @@
-
-
 <!-- <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -190,42 +188,90 @@
 
 <main class="main">
   <div class="container py-3">
-      
-    <h1 class="text-body-emphasis">Get started with Bootstrap</h1>
-    <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.nombre }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.direccion }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.celular }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.telefono }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.hora_inicio }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.hora_fin }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.ciudad }}</h1>
+    <h1 class="text-body-emphasis">{{ resultado_tienda?.data.pais }}</h1>
+    <p class="fs-5 col-md-8">
+      Quickly and easily get started with Bootstrap's compiled, production-ready
+      files with this barebones example featuring some basic HTML and helpful
+      links. Download all our examples to get started.
+    </p>
 
     <div class="mb-5">
-      <a href="/docs/5.3/examples/" class="btn btn-primary btn-lg px-4">Download examples</a>
+      <a href="/docs/5.3/examples/" class="btn btn-primary btn-lg px-4"
+        >Download examples</a
+      >
     </div>
 
-    <hr class="col-3 col-md-2 mb-5">
+    <hr class="col-3 col-md-2 mb-5" />
 
     <div class="row g-5">
       <div class="col-md-6">
         <h2 class="text-body-emphasis">Starter projects</h2>
-        <p>Ready to go beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p>
+        <h2 class="text-body-emphasis">
+          {{ resultado_usuario?.data.nombre_completo }}
+        </h2>
+        <h2 class="text-body-emphasis">{{ resultado_usuario?.data.email }}</h2>
+
+        <p>
+          Ready to go beyond the starter template? Check out these open source
+          projects that you can quickly duplicate to a new GitHub repository.
+        </p>
         <ul class="list-unstyled ps-0">
           <li>
-            <a class="icon-link mb-1" href="https://github.com/twbs/examples/tree/main/icons-font" rel="noopener" target="_blank">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+            <a
+              class="icon-link mb-1"
+              href="https://github.com/twbs/examples/tree/main/icons-font"
+              rel="noopener"
+              target="_blank"
+            >
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap npm starter
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href="https://github.com/twbs/examples/tree/main/parcel" rel="noopener" target="_blank">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+            <a
+              class="icon-link mb-1"
+              href="https://github.com/twbs/examples/tree/main/parcel"
+              rel="noopener"
+              target="_blank"
+            >
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap Parcel starter
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href="https://github.com/twbs/examples/tree/main/vite" rel="noopener" target="_blank">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+            <a
+              class="icon-link mb-1"
+              href="https://github.com/twbs/examples/tree/main/vite"
+              rel="noopener"
+              target="_blank"
+            >
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap Vite starter
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href="https://github.com/twbs/examples/tree/main/webpack" rel="noopener" target="_blank">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+            <a
+              class="icon-link mb-1"
+              href="https://github.com/twbs/examples/tree/main/webpack"
+              rel="noopener"
+              target="_blank"
+            >
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap Webpack starter
             </a>
           </li>
@@ -234,42 +280,61 @@
 
       <div class="col-md-6">
         <h2 class="text-body-emphasis">Guides</h2>
-        <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+        <p>
+          Read more detailed instructions and documentation on using or
+          contributing to Bootstrap.
+        </p>
         <ul class="list-unstyled ps-0">
           <li>
-            <a class="icon-link mb-1" href="/docs/5.3/getting-started/introduction/">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+            <a
+              class="icon-link mb-1"
+              href="/docs/5.3/getting-started/introduction/"
+            >
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap quick start guide
             </a>
           </li>
           <li>
             <a class="icon-link mb-1" href="/docs/5.3/getting-started/webpack/">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap Webpack guide
             </a>
           </li>
           <li>
             <a class="icon-link mb-1" href="/docs/5.3/getting-started/parcel/">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap Parcel guide
             </a>
           </li>
           <li>
             <a class="icon-link mb-1" href="/docs/5.3/getting-started/vite/">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Bootstrap Vite guide
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href="/docs/5.3/getting-started/contribute/">
-              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+            <a
+              class="icon-link mb-1"
+              href="/docs/5.3/getting-started/contribute/"
+            >
+              <svg class="bi" width="16" height="16">
+                <use xlink:href="#arrow-right-circle"></use>
+              </svg>
               Contributing to Bootstrap
             </a>
           </li>
         </ul>
       </div>
     </div>
-      
+
     <!-- FOOTER -->
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
@@ -287,80 +352,46 @@
           <h5>Características</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#"
+              <a
+                class="link-secondary text-decoration-none"
+                href="cosas-interesantes"
                 >Cosas Interesantes</a
               >
             </li>
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Random feature</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Team feature</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Stuff for developers</a
-        >
-      </li> -->
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Another one</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Last time</a
-        >
-      </li> -->
           </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Recursos</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#"
+              <a class="link-secondary text-decoration-none" href="recursos"
                 >Recursos</a
               >
             </li>
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Resource name</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Another resource</a
-        >
-      </li>
-      <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Final resource</a
-        >
-      </li> -->
+            <li class="mb-1">
+              <a class="link-secondary text-decoration-none" href="contactanos"
+                >Contactanos</a
+              >
+            </li>
           </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Acerca de</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">Equipo</a>
+              <a class="link-secondary text-decoration-none" href="equipo"
+                >Equipo</a
+              >
             </li>
-            <!-- <li class="mb-1">
-        <a class="link-secondary text-decoration-none" href="#"
-          >Locations</a
-        >
-      </li> -->
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#"
+              <a class="link-secondary text-decoration-none" href="privacidad"
                 >Privacidad</a
               >
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">Terminos</a>
+              <a class="link-secondary text-decoration-none" href="terminos"
+                >Terminos</a
+              >
             </li>
           </ul>
         </div>
@@ -368,6 +399,5 @@
     </footer>
   </div>
 </main>
-
 
 <router-outlet />

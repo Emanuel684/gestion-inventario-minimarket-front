@@ -1,16 +1,18 @@
-import { CommonModule, formatCurrency } from '@angular/common'
+import { CommonModule, 
+  // formatCurrency 
+} from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import {
-  FormBuilder,
-  FormGroup,
+  // FormBuilder,
+  // FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
+  // Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 // import { ToastrService } from 'ngx-toastr';
 // import { ContactService } from '../../../services/contact.service';
-import { CategoryService } from '../../services/category.service'
+// import { CategoryService } from '../../services/category.service'
 import { UsuariosService } from '../../services/usuarios.services'
 // import { UserProfileService } from '../../../services/user-profile.service';
 
@@ -24,44 +26,34 @@ import { UsuariosService } from '../../services/usuarios.services'
 })
 export class ClientesComponent implements OnInit {
   title = 'Cliente'
-  contactForm!: FormGroup
-  userId = 0
+  
   constructor(
-    private fb: FormBuilder,
-    private categoryService: CategoryService,
-    // private contactService: ContactService,
-    // private toastrService: ToastrService,
-    private loginService: UsuariosService,
-    // private userService:UserProfileService
+    private usuariosService: UsuariosService,
   ) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
-    })
+    
   }
 
   ngOnInit(): void {
     console.log('oninit')
+    var result = this.usuariosService.getUsuariosTienda()
     // this.userId = this.loginService.userId;
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
-      console.log('onSubmit: ')
-      this.loginService.postUsuario()
-      // console.log('result: ', result)
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
-    }
-  }
+  // onSubmit() {
+  //   if (this.contactForm.valid) {
+  //     console.log(this.contactForm.value)
+  //     console.log('onSubmit: ')
+  //     this.loginService.postUsuario()
+  //     // console.log('result: ', result)
+  //     // this.contactService.sendMessage(this.contactForm.value).subscribe(
+  //     //   (response) => {
+  //     //     this.toastrService.success('Message sent successfully!');
+  //     //     this.contactForm.reset(); // Reset form after submission
+  //     //   },
+  //     //   (error) => {
+  //     //     this.toastrService.error('Error sending message. Please try again.');
+  //     //   }
+  //     // );
+  //   }
+  // }
 }

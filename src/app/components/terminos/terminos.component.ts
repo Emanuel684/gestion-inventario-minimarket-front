@@ -15,14 +15,14 @@ import { UsuariosService } from '../../services/usuarios.services'
 // import { UserProfileService } from '../../../services/user-profile.service';
 
 @Component({
-  selector: 'app-crear-cuenta',
+  selector: 'app-terminos',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule],
-  templateUrl: './crear-cuenta.component.html',
-  styleUrl: './crear-cuenta.component.css',
+  templateUrl: './terminos.component.html',
+  styleUrl: './terminos.component.css',
   host: { ngSkipHydration: 'true' },
 })
-export class CrearCuentaComponent implements OnInit {
+export class TerminosComponent implements OnInit {
   contactForm!: FormGroup
   userId = 0
   constructor(
