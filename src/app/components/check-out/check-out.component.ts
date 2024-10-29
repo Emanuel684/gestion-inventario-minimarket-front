@@ -77,6 +77,8 @@ export class CheckOutComponent implements OnInit {
     this.childMessage = ProductosComponent.prototype.parentMessage
     console.log('childMessage: ', this.childMessage)
     console.log('productos: ', this.local.get('productos_usuario'))
-    this.respuesta_clientes = this.usuariosService.getUsuariosTienda()
+    // this.respuesta_clientes = this.usuariosService.getUsuariosTienda()
+    this.respuesta_clientes = this.local.get('productos_usuario')
+    console.log('this.respuesta_clientes: ', this.respuesta_clientes)
   }
 }

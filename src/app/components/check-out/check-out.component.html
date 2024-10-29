@@ -203,11 +203,11 @@
           <tbody>
             @for (
               item of respuesta_clientes?.data;
-              track item.nombre_completo
+              track item.nombre
             ) {
               <tr>
                 <th scope="row" class="text-start">
-                  {{ item.nombre_completo }}
+                  {{ item.nombre }}
                 </th>
                 <th scope="row" class="text-start">{{ item.email }}</th>
                 <th scope="row" class="text-start">{{ item.pais }}</th>
