@@ -51,12 +51,12 @@ export class UsuariosService {
     return response
   }
 
-  getUsuario() {
+  async getUsuario(formualario: any) {
     var complemento: String = 'iniciar-sesion'
     var email = 'emanuelacag@gmail.com'
     var response
 
-    var result = this.http
+    var result = await this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -115,7 +115,7 @@ export class UsuariosService {
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
           // this.errorMessage = error.message;
-          console.error('There was an error!', error)
+          // console.error('There was an error!', error)
 
           // after handling error, return a new observable
           // that doesn't emit any values and completes
@@ -124,11 +124,11 @@ export class UsuariosService {
       )
       .subscribe((data) => {
         response = data
-        console.log('data getUsuariosTienda: ', data)
+        // console.log('data getUsuariosTienda: ', data)
       })
 
-    console.log('result getUsuariosTienda: ', result)
-    console.log('response getUsuariosTienda: ', response)
+    // console.log('result getUsuariosTienda: ', result)
+    // console.log('response getUsuariosTienda: ', response)
     return response
   }
 

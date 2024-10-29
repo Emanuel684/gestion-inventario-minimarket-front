@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { provideHttpClient } from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router'
@@ -18,6 +18,7 @@ import { PrivacidadComponent } from './components/privacidad/privacidad.componen
 import { EquipoComponent } from './components/equipo/equipo.component'
 import { CosasInteresantesComponent } from './components/cosas_interesantes/cosas-interesantes.component'
 import { ContactanosComponent } from './components/contactanos/contactanos.component'
+import { CheckOutComponent } from './components/check-out/check-out.component'
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -35,12 +36,14 @@ const routes: Routes = [
   { path: 'equipo', component: EquipoComponent },
   { path: 'cosas-interesantes', component: CosasInteresantesComponent },
   { path: 'contactanos', component: ContactanosComponent },
+  { path: 'check-out', component: CheckOutComponent },
 ]
 
 @NgModule({
   providers: [provideHttpClient()],
-  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule, CheckOutComponent],
   exports: [RouterModule],
   bootstrap: [RouterModule],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppRoutingModule {}

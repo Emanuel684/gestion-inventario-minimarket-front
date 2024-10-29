@@ -1,4 +1,49 @@
-<style>
+<!-- <style>
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+      180deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
+      90deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --pill-accent: var(--bright-blue);
+
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol';
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   h1 {
     font-size: 3.125rem;
     color: var(--gray-900);
@@ -139,48 +184,39 @@
       margin-block: 1.5rem;
     }
   }
-</style>
+</style> -->
 
-<header>
-  <a type="button" href="/check-out" class="w-100 btn btn-lg btn-primary">
-    Carrito {{productos_carrito?.length}}
-  </a>
-  <app-check-out [childMessage]="parentMessage"></app-check-out>
-</header>
 <main class="main">
+  <div>childMessage {{childMessage}}</div>
   <div class="container py-3">
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      @for (item of productos?.data; track item.nombre) {
-        <div class="col card">
-          <div>
-            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-              <img
-                class="mb-2"
-                src="https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png"
-                alt=""
-              />
-            </div>
-            <div class="card-header py-3 text-bg-primary border-primary">
-              <h4 class="my-0 fw-normal">{{ item.nombre }}</h4>
-            </div>
-            <div class="card-body">
-              <h1 class="card-title pricing-card-title">
-                ${{ item.precio
-                }}<small class="text-body-secondary fw-light">/U</small>
-              </h1>
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Tipo: {{ item.tipo }}</li>
-                <li>Subtipo: {{ item.sub_tipo }}</li>
-              </ul>
-              <label for="customRange1" class="form-label">Cantidad</label>
-              <input type="range" class="form-range" id="customRange1">
-              <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addProducto(item)">
-                Comprar
-              </button>
-            </div>
-          </div>
-        </div>
-      }
+    <div class="content">
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th style="width: 25%">Nombre completo</th>
+              <th style="width: 25%">Email</th>
+              <th style="width: 25%">Pais</th>
+              <th style="width: 25%">Ciudad</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (
+              item of respuesta_clientes?.data;
+              track item.nombre_completo
+            ) {
+              <tr>
+                <th scope="row" class="text-start">
+                  {{ item.nombre_completo }}
+                </th>
+                <th scope="row" class="text-start">{{ item.email }}</th>
+                <th scope="row" class="text-start">{{ item.pais }}</th>
+                <th scope="row" class="text-start">{{ item.ciudad }}</th>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- FOOTER -->

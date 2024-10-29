@@ -41,7 +41,7 @@ export class RecuperacionComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value)
-      this.usuariosService.getUsuario()
+      this.usuariosService.getUsuario(this.contactForm.value)
       // this.contactService.sendMessage(this.contactForm.value).subscribe(
       //   (response) => {
       //     this.toastrService.success('Message sent successfully!');

@@ -1,15 +1,6 @@
-import {
-  CommonModule,
-  // formatCurrency
-} from '@angular/common'
-import { Component, OnInit } from '@angular/core'
-import {
-  // FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  // Validators,
-} from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OnInit } from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { ProductosService } from '../../services/productos.services'
 
@@ -20,41 +11,39 @@ import { ProductosService } from '../../services/productos.services'
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css',
   host: { ngSkipHydration: 'true' },
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProductosComponent implements OnInit {
   title = 'Prodcutos'
-  // contactForm!: FormGroup
-  // userId = 0
-  productos: any = {
-    msg: 'Se obtuvo el resultado exitosamente.',
-    success: true,
-    data: [
-      {
-        id: '6717c43ef963e95aa4789246',
-        nombre: 'Leche',
-        tipo: 'Lacteo',
-        sub_tipo: 'Leche',
-        precio: '5500',
-        fecha_creacion: '2024-10-22T00:00:00',
-        fecha_actualizacion: '2024-10-22T00:00:00',
-      },
-    ],
-  }
 
-  constructor(
-    // private fb: FormBuilder,
-    private productosService: ProductosService,
-  ) {
-    // this.contactForm = this.fb.group({
-    //   password: ['', Validators.required],
-    //   email: ['', [Validators.required, Validators.email]],
-    // })
+  productos_carrito: any = []
+
+  productos: any = {}
+
+  parentMessage = "Message from Parent"
+
+  constructor(private productosService: ProductosService) {}
+
+  addProducto(evento: any): void {
+    const result = this.productos_carrito.filter(
+      (item: any) => item.id == evento.id,
+    )
+    console.log('result: ', result)
+
+    if (result.length == 0) {
+      console.log('Field is updated!')
+      evento.cantidad = 1
+      console.log(evento)
+      this.productos_carrito.push(evento)
+    } else {
+      console.log('result1: ', result[0])
+      evento.cantidad = result[0].cantidad + 1
+      console.log(evento)
+      this.productos_carrito.push()
+    }
   }
 
   ngOnInit(): void {
-    // console.log('oninit Productos')
     this.productos = this.productosService.getAllProductos()
-    // console.log('result Productos: ', this.productos)
-    // this.userId = this.loginService.userId;
   }
 }
