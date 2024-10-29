@@ -145,7 +145,7 @@
   <a type="button" href="/check-out" class="w-100 btn btn-lg btn-primary">
     Carrito {{productos_carrito?.length}}
   </a>
-  <app-check-out [childMessage]="parentMessage"></app-check-out>
+  <!-- <app-check-out [childMessage]="parentMessage"></app-check-out> -->
 </header>
 <main class="main">
   <div class="container py-3">
@@ -172,8 +172,8 @@
                 <li>Tipo: {{ item.tipo }}</li>
                 <li>Subtipo: {{ item.sub_tipo }}</li>
               </ul>
-              <label for="customRange1" class="form-label">Cantidad</label>
-              <input type="range" class="form-range" id="customRange1">
+              <!-- <label for="customRange1" class="form-label">Cantidad</label>
+              <input type="range" class="form-range" id="customRange1"> -->
               <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addProducto(item)">
                 Comprar
               </button>

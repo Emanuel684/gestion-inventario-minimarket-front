@@ -4,6 +4,12 @@ import { catchError, Observable, of } from 'rxjs'
 import { environment } from '../../environments/environment'
 import { CourseCategory } from '../models/category'
 // import { url } from 'inspector'
+import {
+  LocalStorageService,
+  SessionStorageService,
+  LocalStorage,
+  SessionStorage,
+} from 'angular-web-storage'
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +17,11 @@ import { CourseCategory } from '../models/category'
 export class UsuariosService {
   private baseUrl = `${environment.apiUrl}/usuarios`
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private local: LocalStorageService,
+    private session: SessionStorageService,
+  ) {}
 
   postUsuario() {
     var complemento: String = 'crear-cuenta'
@@ -51,12 +61,22 @@ export class UsuariosService {
     return response
   }
 
-  async getUsuario(formualario: any) {
+  KEY = 'value'
+  value: any = null
+
+  getUsuario(formualario: any) {
+    // @LocalStorage() localValue: Object = { text: `Hello ${+new Date}`};
+    // // 设置存储KEY，以及10个小时后过期
+    // @LocalStorage('newKey', 10, 'h') localValue2: Object = { text: `Hello ${+new Date}`};
+    // @SessionStorage() sessionValue: string = `Hello ${+new Date}`;
+
+    this.local.set(this.KEY, { a: 1, now: +new Date() }, 20, 's')
+
     var complemento: String = 'iniciar-sesion'
     var email = 'emanuelacag@gmail.com'
     var response
 
-    var result = await this.http
+    var result = this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -69,6 +89,17 @@ export class UsuariosService {
         }),
       )
       .subscribe((data) => {
+        this.local.set(
+          'login_data',
+          { validation: true, data_user: data },
+          20,
+          's',
+        )
+        if (data.password == formualario.password) {
+          console.log('validation pass')
+          this.local.set('login', { validation: true }, 20, 's')
+        }
+
         response = data
         console.log('data: ', data)
       })

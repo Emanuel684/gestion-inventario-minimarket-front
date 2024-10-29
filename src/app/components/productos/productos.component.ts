@@ -1,8 +1,19 @@
 import { CommonModule } from '@angular/common'
-import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OnInit } from '@angular/core'
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+  OnInit,
+} from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { ProductosService } from '../../services/productos.services'
+import {
+  LocalStorageService,
+  SessionStorageService,
+  LocalStorage,
+  SessionStorage,
+} from 'angular-web-storage'
 
 @Component({
   selector: 'app-productos',
@@ -11,7 +22,7 @@ import { ProductosService } from '../../services/productos.services'
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css',
   host: { ngSkipHydration: 'true' },
-  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProductosComponent implements OnInit {
   title = 'Prodcutos'
@@ -20,9 +31,13 @@ export class ProductosComponent implements OnInit {
 
   productos: any = {}
 
-  parentMessage = "Message from Parent"
+  parentMessage = 'Message from Parent'
 
-  constructor(private productosService: ProductosService) {}
+  constructor(
+    private productosService: ProductosService,
+    private local: LocalStorageService,
+    private session: SessionStorageService,
+  ) {}
 
   addProducto(evento: any): void {
     const result = this.productos_carrito.filter(
@@ -41,6 +56,13 @@ export class ProductosComponent implements OnInit {
       console.log(evento)
       this.productos_carrito.push()
     }
+
+    this.local.set(
+      'productos_usuario',
+      { data: this.productos_carrito },
+      20,
+      's',
+    )
   }
 
   ngOnInit(): void {

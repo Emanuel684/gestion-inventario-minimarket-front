@@ -1,32 +1,36 @@
+import { CommonModule } from '@angular/common'
 import {
-  CommonModule,
-  // formatCurrency
-} from '@angular/common'
-import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OnInit } from '@angular/core'
-import {
-  // FormBuilder,
-  // FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  // Validators,
-} from '@angular/forms'
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+  OnInit,
+} from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-// import { ToastrService } from 'ngx-toastr';
-// import { ContactService } from '../../../services/contact.service';
-// import { CategoryService } from '../../services/category.service'
 import { UsuariosService } from '../../services/usuarios.services'
-// import { UserProfileService } from '../../../services/user-profile.service';
-import { Input } from '@angular/core';
+import { Input } from '@angular/core'
 import { ProductosComponent } from '../productos/productos.component'
+import {
+  LocalStorageService,
+  SessionStorageService,
+  LocalStorage,
+  SessionStorage,
+} from 'angular-web-storage'
 
 @Component({
   selector: 'app-check-out',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule, ProductosComponent],
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    ProductosComponent,
+  ],
   templateUrl: './check-out.component.html',
   styleUrl: './check-out.component.css',
   host: { ngSkipHydration: 'true' },
-  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CheckOutComponent implements OnInit {
   title = 'CheckOut'
@@ -63,33 +67,16 @@ export class CheckOutComponent implements OnInit {
     ],
   }
 
-  constructor(private usuariosService: UsuariosService) {
-    
-
-  }
+  constructor(
+    private usuariosService: UsuariosService,
+    private local: LocalStorageService,
+    private session: SessionStorageService,
+  ) {}
 
   ngOnInit(): void {
     this.childMessage = ProductosComponent.prototype.parentMessage
     console.log('childMessage: ', this.childMessage)
+    console.log('productos: ', this.local.get('productos_usuario'))
     this.respuesta_clientes = this.usuariosService.getUsuariosTienda()
-    // this.userId = this.loginService.userId;
   }
-
-  // onSubmit() {
-  //   if (this.contactForm.valid) {
-  //     console.log(this.contactForm.value)
-  //     console.log('onSubmit: ')
-  //     this.loginService.postUsuario()
-  //     // console.log('result: ', result)
-  //     // this.contactService.sendMessage(this.contactForm.value).subscribe(
-  //     //   (response) => {
-  //     //     this.toastrService.success('Message sent successfully!');
-  //     //     this.contactForm.reset(); // Reset form after submission
-  //     //   },
-  //     //   (error) => {
-  //     //     this.toastrService.error('Error sending message. Please try again.');
-  //     //   }
-  //     // );
-  //   }
-  // }
 }

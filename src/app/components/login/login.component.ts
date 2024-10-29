@@ -38,11 +38,10 @@ export class LoginComponent implements OnInit {
     // this.userId = this.loginService.userId;
   }
 
-  async onSubmit() {
+  onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value)
-      const respuesta = await this.usuariosService.getUsuario(this.contactForm.value)
-      console.log('respuesta onSubmit: ', respuesta)
+      this.usuariosService.getUsuario(this.contactForm.value)
       // this.contactService.sendMessage(this.contactForm.value).subscribe(
       //   (response) => {
       //     this.toastrService.success('Message sent successfully!');
