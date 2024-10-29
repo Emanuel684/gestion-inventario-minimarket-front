@@ -143,12 +143,12 @@
 
 <main class="main">
   <div class="container py-3">
-    <body>
+
       <div class="container contact-us-container">
         <h2>Contactanos</h2>
         <p class="contact-subtitle">
-          We'd love to hear from you! Reach out to us using the form below or
-          through any of our contact methods.
+          ¡Nos encantaría saber de usted! Comuníquese con nosotros usando el siguiente formulario o
+          a través de cualquiera de nuestros métodos de contacto.
         </p>
 
         <div class="row">
@@ -177,7 +177,7 @@
                   class="text-danger"
                 >
                   <small *ngIf="contactForm.get('name')?.errors?.['required']"
-                    >Name is required.</small
+                    >Nombre es requerido.</small
                   >
                 </div>
               </div>
@@ -200,14 +200,14 @@
                   class="text-danger"
                 >
                   <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                    >Email is required.</small
+                    >Email es requerido.</small
                   >
                   <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                    >Invalid email format.</small
+                    >Formato de email invalido.</small
                   >
                 </div>
               </div>
-              <div class="mb-3">
+              <!-- <div class="mb-3">
                 <label for="subject" class="form-label">Contraseña</label>
                 <input
                   type="text"
@@ -229,10 +229,10 @@
                     >Contraseña requerida.</small
                   >
                 </div>
-              </div>
+              </div> -->
               <div class="mb-3">
                 <label for="message" class="form-label"
-                  >Repetir Contraseña</label
+                  >Mensaje</label
                 >
                 <textarea
                   formControlName="message"
@@ -251,7 +251,7 @@
                 >
                   <small
                     *ngIf="contactForm.get('message')?.errors?.['required']"
-                    >Contraseña requerida.</small
+                    >Mensaje requerido.</small
                   >
                 </div>
               </div>
@@ -260,7 +260,7 @@
                 class="btn btn-primary"
                 [disabled]="contactForm.invalid"
               >
-                Send Message
+                Enviar Mensaje
               </button>
             </form>
           </div>
@@ -293,7 +293,7 @@
             </div> -->
         </div>
       </div>
-    </body>
+    
 
     <!-- FOOTER -->
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
