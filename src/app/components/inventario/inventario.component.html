@@ -230,15 +230,10 @@
         <tbody>
           @for (item of productos?.data; track item.nombre) {
           <tr>
-            <th scope="row width: 20%" class="text-start">Leche</th>
-            <!-- <td>
-                <svg class="bi" width="24" height="24">
-                  <use xlink:href="#check"></use>
-                </svg>
-              </td> -->
-            <th scope="row width: 20%" class="text-start">$5.500</th>
-            <th scope="row width: 20%" class="text-start">Lacteo</th>
-            <th scope="row width: 20%" class="text-start">Leche</th>
+            <th scope="row width: 20%" class="text-start">{{item.nombre}}</th>
+            <th scope="row width: 20%" class="text-start">${{item.precio}}</th>
+            <th scope="row width: 20%" class="text-start">{{item.tipo}}</th>
+            <th scope="row width: 20%" class="text-start">{{item.sub_tipo}}</th>
             <th scope="row width: 20%" class="text-start">10</th>
           </tr>
         }
