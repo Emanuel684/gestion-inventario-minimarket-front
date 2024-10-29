@@ -144,33 +144,37 @@
 <main class="main">
   <div class="container py-3">
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      <div class="col card">
-        <div>
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
-            <img
-              class="mb-2"
-              src="https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png"
-              alt=""
-            />
-          </div>
-          <div class="card-header py-3 text-bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Leche</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $5.500<small class="text-body-secondary fw-light">/Unidad</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Tipo: Lacteo</li>
-              <li>Subtipo: Leche</li>
-              <li>Cantidad disponible: 10</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">
-              Comprar
-            </button>
+      @for (item of productos?.data; track item.nombre) {
+        <div class="col card">
+          <div>
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <img
+                class="mb-2"
+                src="https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png"
+                alt=""
+              />
+            </div>
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">{{ item.nombre }}</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                ${{ item.precio
+                }}<small class="text-body-secondary fw-light">/U</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Tipo: {{ item.tipo }}</li>
+                <li>Subtipo: {{ item.sub_tipo }}</li>
+              </ul>
+              <!-- <label for="customRange1" class="form-label">Cantidad</label>
+              <input type="range" class="form-range" id="customRange1"> -->
+              <!-- <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addProducto(item)">
+                Comprar
+              </button> -->
+            </div>
           </div>
         </div>
-      </div>
+      }
       <!-- 
         <div class="pill-group">
           @for (
@@ -224,6 +228,7 @@
           </tr>
         </thead>
         <tbody>
+          @for (item of productos?.data; track item.nombre) {
           <tr>
             <th scope="row width: 20%" class="text-start">Leche</th>
             <!-- <td>
@@ -236,6 +241,7 @@
             <th scope="row width: 20%" class="text-start">Leche</th>
             <th scope="row width: 20%" class="text-start">10</th>
           </tr>
+        }
         </tbody>
       </table>
     </div>
