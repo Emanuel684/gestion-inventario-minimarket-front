@@ -1,49 +1,4 @@
-<!-- <style>
-  :host {
-    --bright-blue: oklch(51.01% 0.274 263.83);
-    --electric-violet: oklch(53.18% 0.28 296.97);
-    --french-violet: oklch(47.66% 0.246 305.88);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --hot-red: oklch(61.42% 0.238 15.34);
-    --orange-red: oklch(63.32% 0.24 31.68);
-
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
-
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --pill-accent: var(--bright-blue);
-
-    font-family:
-      'Inter',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif,
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol';
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
+<style>
   h1 {
     font-size: 3.125rem;
     color: var(--gray-900);
@@ -184,143 +139,53 @@
       margin-block: 1.5rem;
     }
   }
-</style> -->
+</style>
 
+<header>
+  <a type="button" href="/agregar-producto" class="w-100 btn btn-lg btn-primary">
+    Agregar Producto
+  </a>
+</header>
 <main class="main">
   <div class="container py-3">
-    <h1 class="text-body-emphasis">Get started with Bootstrap</h1>
-    <p class="fs-5 col-md-8">
-      Quickly and easily get started with Bootstrap's compiled, production-ready
-      files with this barebones example featuring some basic HTML and helpful
-      links. Download all our examples to get started.
-    </p>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      @for (item of productos?.data; track item.nombre) {
+        <div class="col card">
+          <div>
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <img
+                class="mb-2"
+                src={{item.imagen}}
+                alt=""
+              />
+            </div>
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">{{ item.nombre }}</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                ${{ item.precio
+                }}<small class="text-body-secondary fw-light">/U</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Tipo: {{ item.tipo }}</li>
+                <li>Subtipo: {{ item.sub_tipo }}</li>
+              </ul>
+              <!-- <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addProducto(item)">
+                Comprar
+              </button> -->
+            </div>
+          </div>
+        </div>
+      }
 
-    <div class="mb-5">
-      <a href="/docs/5.3/examples/" class="btn btn-primary btn-lg px-4"
-        >Download examples</a
-      >
-    </div>
-
-    <hr class="col-3 col-md-2 mb-5" />
-
-    <div class="row g-5">
-      <div class="col-md-6">
-        <h2 class="text-body-emphasis">Starter projects</h2>
-        <p>
-          Ready to go beyond the starter template? Check out these open source
-          projects that you can quickly duplicate to a new GitHub repository.
-        </p>
-        <ul class="list-unstyled ps-0">
-          <li>
-            <a
-              class="icon-link mb-1"
-              href="https://github.com/twbs/examples/tree/main/icons-font"
-              rel="noopener"
-              target="_blank"
-            >
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap npm starter
-            </a>
-          </li>
-          <li>
-            <a
-              class="icon-link mb-1"
-              href="https://github.com/twbs/examples/tree/main/parcel"
-              rel="noopener"
-              target="_blank"
-            >
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap Parcel starter
-            </a>
-          </li>
-          <li>
-            <a
-              class="icon-link mb-1"
-              href="https://github.com/twbs/examples/tree/main/vite"
-              rel="noopener"
-              target="_blank"
-            >
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap Vite starter
-            </a>
-          </li>
-          <li>
-            <a
-              class="icon-link mb-1"
-              href="https://github.com/twbs/examples/tree/main/webpack"
-              rel="noopener"
-              target="_blank"
-            >
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap Webpack starter
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-md-6">
-        <h2 class="text-body-emphasis">Guides</h2>
-        <p>
-          Read more detailed instructions and documentation on using or
-          contributing to Bootstrap.
-        </p>
-        <ul class="list-unstyled ps-0">
-          <li>
-            <a
-              class="icon-link mb-1"
-              href="/docs/5.3/getting-started/introduction/"
-            >
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap quick start guide
-            </a>
-          </li>
-          <li>
-            <a class="icon-link mb-1" href="/docs/5.3/getting-started/webpack/">
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap Webpack guide
-            </a>
-          </li>
-          <li>
-            <a class="icon-link mb-1" href="/docs/5.3/getting-started/parcel/">
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap Parcel guide
-            </a>
-          </li>
-          <li>
-            <a class="icon-link mb-1" href="/docs/5.3/getting-started/vite/">
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Bootstrap Vite guide
-            </a>
-          </li>
-          <li>
-            <a
-              class="icon-link mb-1"
-              href="/docs/5.3/getting-started/contribute/"
-            >
-              <svg class="bi" width="16" height="16">
-                <use xlink:href="#arrow-right-circle"></use>
-              </svg>
-              Contributing to Bootstrap
-            </a>
-          </li>
-        </ul>
-      </div>
+      <!-- <button
+                type="submit"
+                class="w-100 btn btn-lg btn-primary"
+                
+              >
+                Agregar producto
+              </button> -->
     </div>
 
     <!-- FOOTER -->

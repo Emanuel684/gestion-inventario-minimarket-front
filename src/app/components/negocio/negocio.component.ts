@@ -1,15 +1,20 @@
-import { CommonModule, formatCurrency } from '@angular/common'
+import {
+  CommonModule,
+  // formatCurrency
+} from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import {
-  FormBuilder,
-  FormGroup,
+  // FormBuilder,
+  // FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
+  // Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 // import { ToastrService } from 'ngx-toastr';
-import { UsuariosService } from '../../services/usuarios.services'
+// import { UsuariosService } from '../../services/usuarios.services'
+import { ProductosService } from '../../services/productos.services'
+import { LocalStorageService, SessionStorageService } from 'angular-web-storage'
 
 @Component({
   selector: 'app-negocio',
@@ -21,36 +26,47 @@ import { UsuariosService } from '../../services/usuarios.services'
 })
 export class NegocioComponent implements OnInit {
   title = 'Negocio'
-  contactForm!: FormGroup
-  userId = 0
+  productos_carrito: any = []
+
+  productos: any = {}
+
+  parentMessage = 'Message from Parent'
+
   constructor(
-    private fb: FormBuilder,
-    private usuariosService: UsuariosService,
-  ) {
-    this.contactForm = this.fb.group({
-      password: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    })
+    private productosService: ProductosService,
+    private local: LocalStorageService,
+    private session: SessionStorageService,
+  ) {}
+
+  addProducto(evento: any): void {
+    // const result = this.productos_carrito.filter(
+    //   (item: any) => item.id == evento.id,
+    // )
+    // console.log('result: ', result)
+
+    // if (result.length == 0) {
+    //   console.log('Field is updated!')
+    //   evento.cantidad = 1
+    //   console.log(evento)
+    //   this.productos_carrito.push(evento)
+    // } else {
+    //   console.log('result1: ', result[0])
+    //   evento.cantidad = result[0].cantidad + 1
+    //   console.log(evento)
+    //   this.productos_carrito.push()
+    // }
+
+    this.productos_carrito.push(evento)
+
+    this.local.set(
+      'productos_usuario',
+      { data: this.productos_carrito },
+      20,
+      's',
+    )
   }
 
   ngOnInit(): void {
-    console.log('oninit')
-    // this.userId = this.loginService.userId;
-  }
-
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
-      this.usuariosService.getUsuario(this.contactForm.value)
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
-    }
+    this.productos = this.productosService.getAllProductos()
   }
 }

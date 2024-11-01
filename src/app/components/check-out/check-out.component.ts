@@ -8,7 +8,6 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { UsuariosService } from '../../services/usuarios.services'
-import { Input } from '@angular/core'
 import { ProductosComponent } from '../productos/productos.component'
 import {
   LocalStorageService,
@@ -34,9 +33,6 @@ import {
 })
 export class CheckOutComponent implements OnInit {
   title = 'CheckOut'
-
-  @Input('childMessage')
-  childMessage: string | undefined = ProductosComponent.prototype.parentMessage
 
   respuesta_clientes: any = {
     msg: 'Se obtuvo el resultado exitosamente.',
@@ -74,11 +70,37 @@ export class CheckOutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.childMessage = ProductosComponent.prototype.parentMessage
-    console.log('childMessage: ', this.childMessage)
     console.log('productos: ', this.local.get('productos_usuario'))
     // this.respuesta_clientes = this.usuariosService.getUsuariosTienda()
     this.respuesta_clientes = this.local.get('productos_usuario')
     console.log('this.respuesta_clientes: ', this.respuesta_clientes)
+  }
+
+  addProducto(): void {
+    // const result = this.productos_carrito.filter(
+    //   (item: any) => item.id == evento.id,
+    // )
+    // console.log('result: ', result)
+
+    // if (result.length == 0) {
+    //   console.log('Field is updated!')
+    //   evento.cantidad = 1
+    //   console.log(evento)
+    //   this.productos_carrito.push(evento)
+    // } else {
+    //   console.log('result1: ', result[0])
+    //   evento.cantidad = result[0].cantidad + 1
+    //   console.log(evento)
+    //   this.productos_carrito.push()
+    // }
+
+    console.log(this.respuesta_clientes)
+
+    this.local.set(
+      'productos_usuario',
+      { data: this.respuesta_clientes },
+      20,
+      's',
+    )
   }
 }

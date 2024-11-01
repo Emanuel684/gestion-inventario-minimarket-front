@@ -23,6 +23,7 @@ import { EquipoComponent } from './components/equipo/equipo.component'
 import { CosasInteresantesComponent } from './components/cosas_interesantes/cosas-interesantes.component'
 import { ContactanosComponent } from './components/contactanos/contactanos.component'
 import { CheckOutComponent } from './components/check-out/check-out.component'
+import { AgregarProductoComponent } from './components/agregar_producto/agregar-producto.component'
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'cosas-interesantes', component: CosasInteresantesComponent },
   { path: 'contactanos', component: ContactanosComponent },
   { path: 'check-out', component: CheckOutComponent },
+  { path: 'agregar-producto', component: AgregarProductoComponent },
 ]
 
 @NgModule({

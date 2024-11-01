@@ -40,22 +40,24 @@ export class ProductosComponent implements OnInit {
   ) {}
 
   addProducto(evento: any): void {
-    const result = this.productos_carrito.filter(
-      (item: any) => item.id == evento.id,
-    )
-    console.log('result: ', result)
+    // const result = this.productos_carrito.filter(
+    //   (item: any) => item.id == evento.id,
+    // )
+    // console.log('result: ', result)
 
-    if (result.length == 0) {
-      console.log('Field is updated!')
-      evento.cantidad = 1
-      console.log(evento)
-      this.productos_carrito.push(evento)
-    } else {
-      console.log('result1: ', result[0])
-      evento.cantidad = result[0].cantidad + 1
-      console.log(evento)
-      this.productos_carrito.push()
-    }
+    // if (result.length == 0) {
+    //   console.log('Field is updated!')
+    //   evento.cantidad = 1
+    //   console.log(evento)
+    //   this.productos_carrito.push(evento)
+    // } else {
+    //   console.log('result1: ', result[0])
+    //   evento.cantidad = result[0].cantidad + 1
+    //   console.log(evento)
+    //   this.productos_carrito.push()
+    // }
+
+    this.productos_carrito.push(evento)
 
     this.local.set(
       'productos_usuario',
