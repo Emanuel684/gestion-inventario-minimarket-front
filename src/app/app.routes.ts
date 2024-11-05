@@ -16,6 +16,7 @@ import { CosasInteresantesComponent } from './components/cosas_interesantes/cosa
 import { ContactanosComponent } from './components/contactanos/contactanos.component'
 import { CheckOutComponent } from './components/check-out/check-out.component'
 import { AgregarProductoComponent } from './components/agregar_producto/agregar-producto.component'
+import { PedidosComponent } from './components/pedidos/pedidos.component'
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,4 +38,5 @@ export const routes: Routes = [
   { path: 'contactanos', component: ContactanosComponent },
   { path: 'check-out', component: CheckOutComponent },
   { path: 'agregar-producto', component: AgregarProductoComponent },
+  { path: 'pedidos', component: PedidosComponent },
 ]

@@ -13,7 +13,7 @@ export class PedidosService {
 
   constructor(private http: HttpClient) {}
 
-  postPedido() {
+  postPedido(formValues: any) {
     console.log('postPedido')
 
     var bodyU = {
@@ -24,21 +24,11 @@ export class PedidosService {
       id: '662d0d325363bbc93a0c0295',
       id_cliente: '662d0d325363bbc93a0c0295',
       id_tienda: '662d0d325363bbc93a0c0295',
-      precio_total: 700,
-      productos: ['662d0d325363bbc93a0c0295', '662d0d325363bbc93a0c0295'],
+      precio_total: '700',
+      productos: '662d0d325363bbc93a0c0295,662d0d325363bbc93a0c0295',
     }
 
     var complemento: String = 'crear-pedido'
-    // var bodyU = {
-    //   fecha_actualizacion: "2024-11-01T00:00:00",
-    //   fecha_creacion: "2024-11-01T00:00:00",
-    //   id: "662d0d325363bbc93a0c0295",
-    //   imagen: "https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png",
-    //   nombre: "Quesito Costeño",
-    //   precio: "11000",
-    //   sub_tipo: "Leche",
-    //   tipo: "Lacteo"
-    // }
 
     var response = {}
 
@@ -65,13 +55,6 @@ export class PedidosService {
     return response
   }
 
-  getCategories(): Observable<CourseCategory[]> {
-    return this.http.get<CourseCategory[]>(`${this.baseUrl}`)
-  }
-  postTienda(): Observable<CourseCategory[]> {
-    var complemento: String = ''
-    return this.http.get<CourseCategory[]>(`${this.baseUrl}/${complemento}`)
-  }
   putTienda(): Observable<CourseCategory[]> {
     var complemento: String = ''
     return this.http.get<CourseCategory[]>(`${this.baseUrl}/${complemento}`)

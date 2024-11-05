@@ -24,7 +24,7 @@ import {
 } from 'angular-web-storage'
 
 @Component({
-  selector: 'app-check-out',
+  selector: 'app-pedidos',
   standalone: true,
   imports: [
     RouterModule,
@@ -33,14 +33,14 @@ import {
     FormsModule,
     ProductosComponent,
   ],
-  templateUrl: './check-out.component.html',
-  styleUrl: './check-out.component.css',
+  templateUrl: './pedidos.component.html',
+  styleUrl: './pedidos.component.css',
   host: { ngSkipHydration: 'true' },
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
-export class CheckOutComponent implements OnInit {
+export class PedidosComponent implements OnInit {
   contactForm!: FormGroup
-  title = 'CheckOut'
+  title = 'Pedidos'
 
   total_compras = '0'
 
@@ -88,7 +88,7 @@ export class CheckOutComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('contactForm: ', this.contactForm.value)
+      console.log('contactForm: ', this.contactForm)
       // console.log(this.contactForm.value)
       // console.log('onSubmit: ')
       // this.loginService.postUsuario()
