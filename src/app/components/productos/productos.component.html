@@ -142,15 +142,17 @@
 </style>
 
 <header>
-  <a type="button" href="/check-out" class="w-100 btn btn-lg btn-primary">
-    Carrito {{ productos_carrito?.length }}
-  </a>
+  <div class="text-right m-1">
+    <a type="button" href="/check-out" class="w-20 btn btn-lg btn-primary">
+      Carrito {{ productos_carrito?.length }}
+    </a>
+  </div>
 </header>
 <main class="main">
   <div class="container py-3">
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="row row-cols-1 row-cols-md-4 mb-4 text-center">
       @for (item of productos?.data; track item.nombre) {
-        <div class="col card">
+        <div class="col card m-2">
           <div>
             <div class="card mb-4 rounded-3 shadow-sm border-primary">
               <img class="mb-2" src="{{ item.imagen }}" alt="" />

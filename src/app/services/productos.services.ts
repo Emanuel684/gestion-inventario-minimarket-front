@@ -13,8 +13,6 @@ export class ProductosService {
   constructor(private http: HttpClient) {}
 
   postProducto(producto: any) {
-    console.log(producto)
-
     var base = {
       fecha_actualizacion: '2024-11-01T00:00:00',
       fecha_creacion: '2024-11-01T00:00:00',
@@ -23,16 +21,6 @@ export class ProductosService {
     var bodyU = Object.assign({}, base, producto)
 
     var complemento: String = 'crear-producto'
-    // var bodyU = {
-    //   fecha_actualizacion: "2024-11-01T00:00:00",
-    //   fecha_creacion: "2024-11-01T00:00:00",
-    //   id: "662d0d325363bbc93a0c0295",
-    //   imagen: "https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png",
-    //   nombre: "Quesito Costeño",
-    //   precio: "11000",
-    //   sub_tipo: "Leche",
-    //   tipo: "Lacteo"
-    // }
 
     var response = {}
 

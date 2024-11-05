@@ -15,6 +15,7 @@ import {
 import { RouterModule } from '@angular/router'
 import { UsuariosService } from '../../services/usuarios.services'
 import { ProductosComponent } from '../productos/productos.component'
+import { PedidosService } from '../../services/pedidos.services'
 import {
   LocalStorageService,
   SessionStorageService,
@@ -75,6 +76,7 @@ export class CheckOutComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usuariosService: UsuariosService,
+    private pedidosService: PedidosService,
     private local: LocalStorageService,
     private session: SessionStorageService,
   ) {
@@ -152,7 +154,9 @@ export class CheckOutComponent implements OnInit {
     this.calTotal()
   }
 
-  addProducto(): void {
+  pagarProductos(): void {
+    this.pedidosService.postPedido()
+
     this.local.set(
       'productos_usuario',
       { data: this.respuesta_clientes },

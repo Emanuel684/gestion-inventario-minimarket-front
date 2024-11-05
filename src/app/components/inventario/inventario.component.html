@@ -148,11 +148,7 @@
         <div class="col card">
           <div>
             <div class="card mb-4 rounded-3 shadow-sm border-primary">
-              <img
-                class="mb-2"
-                src="https://seeklogo.com/images/M/mini-market-logo-BF4A1CB5E0-seeklogo.com.png"
-                alt=""
-              />
+              <img class="mb-2" src="{{ item.imagen }}" alt="" />
             </div>
             <div class="card-header py-3 text-bg-primary border-primary">
               <h4 class="my-0 fw-normal">{{ item.nombre }}</h4>
@@ -166,52 +162,10 @@
                 <li>Tipo: {{ item.tipo }}</li>
                 <li>Subtipo: {{ item.sub_tipo }}</li>
               </ul>
-              <!-- <label for="customRange1" class="form-label">Cantidad</label>
-              <input type="range" class="form-range" id="customRange1"> -->
-              <!-- <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addProducto(item)">
-                Comprar
-              </button> -->
             </div>
           </div>
         </div>
       }
-      <!-- 
-        <div class="pill-group">
-          @for (
-            item of [
-              { title: 'Explore the Docs', link: 'https://angular.dev' },
-              {
-                title: 'Learn with Tutorials',
-                link: 'https://angular.dev/tutorials',
-              },
-              { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
-              {
-                title: 'Angular Language Service',
-                link: 'https://angular.dev/tools/language-service',
-              },
-              {
-                title: 'Angular DevTools',
-                link: 'https://angular.dev/tools/devtools',
-              },
-            ];
-            track item.title
-          ) {
-            <a class="pill" [href]="item.link" target="_blank" rel="noopener">
-              <span>{{ item.title }}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="14"
-                viewBox="0 -960 960 960"
-                width="14"
-                fill="currentColor"
-              >
-                <path
-                  d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
-                />
-              </svg>
-            </a>
-          }
-        </div> -->
     </div>
 
     <h2 class="display-6 text-center mb-4">Tabla de productos</h2>
