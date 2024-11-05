@@ -1,108 +1,51 @@
 <main class="main">
   <div class="container py-3">
     <div class="content">
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label for="direccion" class="form-label">Dirección de entrega</label>
-          <input
-            type="text"
-            formControlName="direccion"
-            class="form-control"
-            id="direccion"
-            placeholder="Ingresa tu nombre completo"
-          />
-          <div
-            *ngIf="
-              contactForm.get('direccion')?.invalid &&
-              (contactForm.get('direccion')?.touched ||
-                contactForm.get('direccion')?.dirty)
-            "
-            class="text-danger"
-          >
-            <small *ngIf="contactForm.get('direccion')?.errors?.['required']"
-              >Dirección de entrega requerida.</small
-            >
-          </div>
-        </div>
+      <h1>Pedidos</h1>
 
-        <div class="mb-3">
-          <label for="fechaEntrega" class="form-label">Fecha de entrega</label>
-          <input
-            type="date"
-            formControlName="fechaEntrega"
-            class="form-control"
-            id="fechaEntrega"
-            placeholder=""
-          />
-          <div
-            *ngIf="
-              contactForm.get('fechaEntrega')?.invalid &&
-              (contactForm.get('fechaEntrega')?.touched ||
-                contactForm.get('fechaEntrega')?.dirty)
-            "
-            class="text-danger"
-          >
-            <small *ngIf="contactForm.get('fechaEntrega')?.errors?.['required']"
-              >Fecha de entrega requerida.</small
-            >
-          </div>
-        </div>
-
-        <div class="table-responsive">
-          <table class="table text-center">
-            <thead>
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th style="width: 25%">Dirección</th>
+              <th style="width: 25%">Fecha de entrega</th>
+              <th style="width: 25%">Precio Total</th>
+              <th style="width: 25%">Fecha de creacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of resultados_pedidos?.data; track item.id) {
               <tr>
-                <th style="width: 25%">Nombre</th>
-                <th style="width: 25%">Tipo</th>
-                <th style="width: 25%">Sub Tipo</th>
-                <th style="width: 25%">Precio</th>
+                <th scope="row" class="text-start">
+                  {{ item.direccion }}
+                </th>
+                <th scope="row" class="text-start">{{ item.fecha_entrega }}</th>
+                <th scope="row" class="text-start">{{ item.precio_total }}</th>
+                <th scope="row" class="text-start">
+                  {{ item.fecha_creacion }}
+                </th>
+                <th scope="row" class="text-start">
+                  <!-- <button
+                    type="submit"
+                    class="w-100 btn btn-lg btn-primary"
+                    (click)="deleteProducto(item)"
+                  >
+                    Eliminar
+                  </button> -->
+                  <button type="submit" class="w-100 btn btn-lg btn-primary">
+                    Eliminar
+                  </button>
+                </th>
+                <th scope="row" class="text-start">
+                  <button type="submit" class="w-100 btn btn-lg btn-primary">
+                    Mas
+                  </button>
+                </th>
               </tr>
-            </thead>
-            <tbody>
-              @for (item of respuesta_clientes?.data; track item.nombre) {
-                <tr>
-                  <th scope="row" class="text-start">
-                    {{ item.nombre }}
-                  </th>
-                  <th scope="row" class="text-start">{{ item.tipo }}</th>
-                  <th scope="row" class="text-start">{{ item.sub_tipo }}</th>
-                  <th scope="row" class="text-start">{{ item.precio }}</th>
-                  <th scope="row" class="text-start">
-                    <button
-                      type="submit"
-                      class="w-100 btn btn-lg btn-primary"
-                      (click)="deleteProducto(item)"
-                    >
-                      Eliminar
-                    </button>
-                  </th>
-                </tr>
-              }
-              <tr>
-                <th scope="row" class="text-start"></th>
-                <th scope="row" class="text-start"></th>
-                <th scope="row" class="text-start"></th>
-                <th scope="row" class="text-start">{{ total_compras }}</th>
-                <th scope="row" class="text-start"></th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <button
-          type="submit"
-          class="btn btn-primary container-sm"
-          [disabled]="contactForm.invalid"
-        >
-          <a
-            type="button"
-            class="w-100 btn btn-lg btn-primary"
-            (click)="pagarProductos()"
-          >
-            Pagar productos
-          </a>
-        </button>
-      </form>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- FOOTER -->

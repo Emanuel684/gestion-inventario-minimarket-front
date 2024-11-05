@@ -55,6 +55,32 @@ export class PedidosService {
     return response
   }
 
+  getAllPedidos() {
+    var complemento: String = 'pedidos-registrados'
+    var response
+
+    this.http
+      .get(`${this.baseUrl}/${complemento}`)
+      .pipe(
+        catchError((error: any, caught: Observable<any>): Observable<any> => {
+          // this.errorMessage = error.message;
+          console.error('There was an error!', error)
+
+          // after handling error, return a new observable
+          // that doesn't emit any values and completes
+          return of()
+        }),
+      )
+      .subscribe((data) => {
+        response = data
+        console.log('data: ', data)
+      })
+
+    // console.log('result: ', result)
+    console.log('response: ', response)
+    return response
+  }
+
   putTienda(): Observable<CourseCategory[]> {
     var complemento: String = ''
     return this.http.get<CourseCategory[]>(`${this.baseUrl}/${complemento}`)

@@ -19,8 +19,8 @@ import { PedidosService } from '../../services/pedidos.services'
 import {
   LocalStorageService,
   SessionStorageService,
-  LocalStorage,
-  SessionStorage,
+  // LocalStorage,
+  // SessionStorage,
 } from 'angular-web-storage'
 
 @Component({
@@ -44,31 +44,20 @@ export class PedidosComponent implements OnInit {
 
   total_compras = '0'
 
-  respuesta_clientes: any = {
+  resultados_pedidos: any = {
     msg: 'Se obtuvo el resultado exitosamente.',
     success: true,
     data: [
       {
-        id: '6716b4727e2682dc485954a1',
-        nombre_completo: 'Emanuel Acevedo',
-        email: 'emanuelacag@gmail.com',
-        password: 'Ytpgs9m1!',
-        pais: 'Colombia',
-        ciudad: 'Medellín',
-        tipo: 'cliente',
+        id: '672a9266687e378ff111c27d',
+        id_tienda: '662d0d325363bbc93a0c0295',
+        id_cliente: '662d0d325363bbc93a0c0295',
+        productos: '662d0d325363bbc93a0c0295,662d0d325363bbc93a0c0295',
+        precio_total: '700',
+        direccion: 'UNDER DECOMMISSIONING',
+        fecha_entrega: '1966-04-28T00:00:00',
         fecha_creacion: '1966-04-28T00:00:00',
         fecha_actualizacion: '1966-04-28T00:00:00',
-      },
-      {
-        id: '6717c09a4f00c9c785619f29',
-        nombre_completo: 'Carlos Acevedo',
-        email: 'carlosacag@gmail.com',
-        password: 'Ytpgs9m2!',
-        pais: 'Colombia',
-        ciudad: 'Medellín',
-        tipo: 'tendero',
-        fecha_creacion: '2024-10-22T00:00:00',
-        fecha_actualizacion: '2024-10-22T00:00:00',
       },
     ],
   }
@@ -105,63 +94,66 @@ export class PedidosComponent implements OnInit {
     }
   }
 
-  calTotal() {
-    this.respuesta_clientes = this.local.get('productos_usuario')
+  // calTotal() {
+  //   this.respuesta_clientes = this.local.get('productos_usuario')
 
-    var total_p = 0
+  //   var total_p = 0
 
-    for (const property of this.respuesta_clientes['data']) {
-      console.log(`${property}`)
-      total_p = total_p + parseInt(property['precio'])
-    }
+  //   for (const property of this.respuesta_clientes['data']) {
+  //     console.log(`${property}`)
+  //     total_p = total_p + parseInt(property['precio'])
+  //   }
 
-    this.total_compras = total_p.toString()
-    console.log('this.respuesta_clientes: ', this.respuesta_clientes)
-  }
+  //   this.total_compras = total_p.toString()
+  //   console.log('this.respuesta_clientes: ', this.respuesta_clientes)
+  // }
 
   ngOnInit(): void {
-    this.calTotal()
+    console.log('ngOnInit pedidos')
+    // this.calTotal()
+    this.resultados_pedidos = this.pedidosService.getAllPedidos()
+    console.log('resultados_pedidos: ', this.resultados_pedidos)
   }
 
-  deleteProducto(evento: any): void {
-    const result = this.respuesta_clientes['data'].filter(
-      (item: any) => item.id == evento.id,
-    )
+  // deleteProducto(evento: any): void {
+  //   const result = this.respuesta_clientes['data'].filter(
+  //     (item: any) => item.id == evento.id,
+  //   )
 
-    if (result.length == 0) {
-      console.log('Field is updated!')
-    } else {
-      function removeValue(value: any, index: any, arr: any) {
-        // If the value at the current array index matches the specified value (2)
-        if (value == result[0]) {
-          // Removes the value from the original array
-          arr.splice(index, 1)
-          return true
-        }
-        return false
-      }
-      const x = this.respuesta_clientes['data'].filter(removeValue)
-    }
+  //   if (result.length == 0) {
+  //     console.log('Field is updated!')
+  //   } else {
+  //     function removeValue(value: any, index: any, arr: any) {
+  //       // If the value at the current array index matches the specified value (2)
+  //       if (value == result[0]) {
+  //         // Removes the value from the original array
+  //         arr.splice(index, 1)
+  //         return true
+  //       }
+  //       return false
+  //     }
+  //     const x = this.respuesta_clientes['data'].filter(removeValue)
+  //   }
 
-    this.local.set(
-      'productos_usuario',
-      { data: this.respuesta_clientes['data'] },
-      20,
-      's',
-    )
+  //   this.local.set(
+  //     'productos_usuario',
+  //     { data: this.respuesta_clientes['data'] },
+  //     20,
+  //     's',
+  //   )
 
-    // Calculamos la valor todal despues de eliminar un producto
-    this.calTotal()
-  }
+  //   // Calculamos la valor todal despues de eliminar un producto
+  //   this.calTotal()
+  // }
 
   pagarProductos(): void {
     this.pedidosService.postPedido(this.contactForm.value)
 
-    this.local.set(
-      'productos_usuario',
-      { data: this.respuesta_clientes },
-      20,
-      's',
-    )
+    // this.local.set(
+    //   'productos_usuario',
+    //   { data: this.respuesta_clientes },
+    //   20,
+    //   's',
+    // )
   }
 }
