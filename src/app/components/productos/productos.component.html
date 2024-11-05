@@ -143,7 +143,7 @@
 
 <header>
   <a type="button" href="/check-out" class="w-100 btn btn-lg btn-primary">
-    Carrito {{productos_carrito?.length}}
+    Carrito {{ productos_carrito?.length }}
   </a>
 </header>
 <main class="main">
@@ -153,11 +153,7 @@
         <div class="col card">
           <div>
             <div class="card mb-4 rounded-3 shadow-sm border-primary">
-              <img
-                class="mb-2"
-                src={{item.imagen}}
-                alt=""
-              />
+              <img class="mb-2" src="{{ item.imagen }}" alt="" />
             </div>
             <div class="card-header py-3 text-bg-primary border-primary">
               <h4 class="my-0 fw-normal">{{ item.nombre }}</h4>
@@ -171,7 +167,11 @@
                 <li>Tipo: {{ item.tipo }}</li>
                 <li>Subtipo: {{ item.sub_tipo }}</li>
               </ul>
-              <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addProducto(item)">
+              <button
+                type="button"
+                class="w-100 btn btn-lg btn-primary"
+                (click)="addProducto(item)"
+              >
                 Comprar
               </button>
             </div>

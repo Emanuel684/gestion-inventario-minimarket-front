@@ -229,14 +229,20 @@
         </thead>
         <tbody>
           @for (item of productos?.data; track item.nombre) {
-          <tr>
-            <th scope="row width: 20%" class="text-start">{{item.nombre}}</th>
-            <th scope="row width: 20%" class="text-start">${{item.precio}}</th>
-            <th scope="row width: 20%" class="text-start">{{item.tipo}}</th>
-            <th scope="row width: 20%" class="text-start">{{item.sub_tipo}}</th>
-            <th scope="row width: 20%" class="text-start">10</th>
-          </tr>
-        }
+            <tr>
+              <th scope="row width: 20%" class="text-start">
+                {{ item.nombre }}
+              </th>
+              <th scope="row width: 20%" class="text-start">
+                ${{ item.precio }}
+              </th>
+              <th scope="row width: 20%" class="text-start">{{ item.tipo }}</th>
+              <th scope="row width: 20%" class="text-start">
+                {{ item.sub_tipo }}
+              </th>
+              <th scope="row width: 20%" class="text-start">10</th>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
