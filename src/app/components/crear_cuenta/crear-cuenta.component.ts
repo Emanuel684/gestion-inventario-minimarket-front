@@ -48,8 +48,8 @@ export class CrearCuentaComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
-      console.log('onSubmit: ')
+      // console.log(this.contactForm.value)
+      // console.log('onSubmit: ')
       this.loginService.postUsuario()
       // console.log('result: ', result)
       // this.contactService.sendMessage(this.contactForm.value).subscribe(

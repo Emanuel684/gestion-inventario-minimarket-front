@@ -5,7 +5,13 @@ import {
   NO_ERRORS_SCHEMA,
   OnInit,
 } from '@angular/core'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { UsuariosService } from '../../services/usuarios.services'
 import { ProductosComponent } from '../productos/productos.component'
@@ -32,6 +38,7 @@ import {
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CheckOutComponent implements OnInit {
+  contactForm!: FormGroup
   title = 'CheckOut'
 
   total_compras = '0'
@@ -66,14 +73,37 @@ export class CheckOutComponent implements OnInit {
   }
 
   constructor(
+    private fb: FormBuilder,
     private usuariosService: UsuariosService,
     private local: LocalStorageService,
     private session: SessionStorageService,
-  ) {}
+  ) {
+    this.contactForm = this.fb.group({
+      direccion: ['', Validators.required],
+      fechaEntrega: ['', [Validators.required]],
+    })
+  }
 
-  ngOnInit(): void {
-    console.log('productos: ', this.local.get('productos_usuario'))
-    // this.respuesta_clientes = this.usuariosService.getUsuariosTienda()
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log('contactForm: ', this.contactForm)
+      // console.log(this.contactForm.value)
+      // console.log('onSubmit: ')
+      // this.loginService.postUsuario()
+      // console.log('result: ', result)
+      // this.contactService.sendMessage(this.contactForm.value).subscribe(
+      //   (response) => {
+      //     this.toastrService.success('Message sent successfully!');
+      //     this.contactForm.reset(); // Reset form after submission
+      //   },
+      //   (error) => {
+      //     this.toastrService.error('Error sending message. Please try again.');
+      //   }
+      // );
+    }
+  }
+
+  calTotal() {
     this.respuesta_clientes = this.local.get('productos_usuario')
 
     var total_p = 0
@@ -87,70 +117,42 @@ export class CheckOutComponent implements OnInit {
     console.log('this.respuesta_clientes: ', this.respuesta_clientes)
   }
 
+  ngOnInit(): void {
+    this.calTotal()
+  }
+
   deleteProducto(evento: any): void {
-    console.log('deleteProducto: ', this.respuesta_clientes)
     const result = this.respuesta_clientes['data'].filter(
-      (item: any) => item.id != evento.id,
+      (item: any) => item.id == evento.id,
     )
 
     if (result.length == 0) {
       console.log('Field is updated!')
-      console.log('result: no find ', result)
-    } else if (result.length == 1) {
-      console.log('result: find', result)
-      // this.productos_carrito.push(evento)
-
-      // const myArray = [1, 2, 3, 4, 5];
-
+    } else {
       function removeValue(value: any, index: any, arr: any) {
         // If the value at the current array index matches the specified value (2)
-        if (value === result) {
+        if (value == result[0]) {
           // Removes the value from the original array
           arr.splice(index, 1)
           return true
         }
         return false
       }
-
-      // Pass the removeValue function into the filter function to return the specified value
       const x = this.respuesta_clientes['data'].filter(removeValue)
-
-      // console.log(`myArray values: ${myArray}`);
-      console.log(`variable x value: ${x}`)
-    } else {
-      console.log('result: more that 1', result)
     }
-
-    console.log(this.respuesta_clientes)
 
     this.local.set(
       'productos_usuario',
-      { data: this.respuesta_clientes },
+      { data: this.respuesta_clientes['data'] },
       20,
       's',
     )
+
+    // Calculamos la valor todal despues de eliminar un producto
+    this.calTotal()
   }
 
   addProducto(): void {
-    // const result = this.productos_carrito.filter(
-    //   (item: any) => item.id == evento.id,
-    // )
-    // console.log('result: ', result)
-
-    // if (result.length == 0) {
-    //   console.log('Field is updated!')
-    //   evento.cantidad = 1
-    //   console.log(evento)
-    //   this.productos_carrito.push(evento)
-    // } else {
-    //   console.log('result1: ', result[0])
-    //   evento.cantidad = result[0].cantidad + 1
-    //   console.log(evento)
-    //   this.productos_carrito.push()
-    // }
-
-    console.log(this.respuesta_clientes)
-
     this.local.set(
       'productos_usuario',
       { data: this.respuesta_clientes },
