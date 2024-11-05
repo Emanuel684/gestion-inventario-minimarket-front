@@ -148,101 +148,126 @@
       <div class="col-lg-6 container-sm">
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="name" class="form-label">Nombre Completo</label>
+            <label for="nombre" class="form-label">Nombre Producto</label>
             <input
               type="text"
-              formControlName="name"
+              formControlName="nombre"
               class="form-control"
-              id="name"
+              id="nombre"
               placeholder="Ingresa tu nombre completo"
             />
             <div
               *ngIf="
-                contactForm.get('name')?.invalid &&
-                (contactForm.get('name')?.touched ||
-                  contactForm.get('name')?.dirty)
+                contactForm.get('nombre')?.invalid &&
+                (contactForm.get('nombre')?.touched ||
+                  contactForm.get('nombre')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('name')?.errors?.['required']"
-                >Nombre completo requerido.</small
+              <small *ngIf="contactForm.get('nombre')?.errors?.['required']"
+                >Nombre requerido.</small
               >
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="tipo" class="form-label">Tipo</label>
             <input
-              type="email"
-              formControlName="email"
+              type="tipo"
+              formControlName="tipo"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="tipo"
+              placeholder="Ingresa tu el tipo de producto"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('tipo')?.invalid &&
+                (contactForm.get('tipo')?.touched ||
+                  contactForm.get('tipo')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('tipo')?.errors?.['required']"
+                >Tipo requerido.</small
               >
             </div>
           </div>
+          
           <div class="mb-3">
-            <label for="subject" class="form-label">Contraseña</label>
+            <label for="sub_tipo" class="form-label">Sub-Tipo</label>
             <input
-              type="password"
-              formControlName="subject"
+              type="sub_tipo"
+              formControlName="sub_tipo"
               class="form-control"
-              id="subject"
+              id="sub_tipo"
+              placeholder="Ingresa el sub-tipo de producto"
             />
             <div
               *ngIf="
-                contactForm.get('subject')?.invalid &&
-                (contactForm.get('subject')?.touched ||
-                  contactForm.get('subject')?.dirty)
+                contactForm.get('sub_tipo')?.invalid &&
+                (contactForm.get('sub_tipo')?.touched ||
+                  contactForm.get('sub_tipo')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('subject')?.errors?.['required']"
-                >Contraseña requerida.</small
+              <small *ngIf="contactForm.get('sub_tipo')?.errors?.['required']"
+                >Sub-Tipo requerido.</small
               >
             </div>
           </div>
+
           <div class="mb-3">
-            <label for="message" class="form-label">Repetir Contraseña</label>
+            <label for="precio" class="form-label">Precio</label>
             <input
-              type="password"
-              formControlName="message"
+              type="precio"
+              formControlName="precio"
               class="form-control"
-              id="message"
+              id="precio"
+              placeholder="Ingresa tu precio"
             />
             <div
               *ngIf="
-                contactForm.get('message')?.invalid &&
-                (contactForm.get('message')?.touched ||
-                  contactForm.get('message')?.dirty)
+                contactForm.get('precio')?.invalid &&
+                (contactForm.get('precio')?.touched ||
+                  contactForm.get('precio')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('message')?.errors?.['required']"
-                >Contraseña requerida.</small
+              <small *ngIf="contactForm.get('precio')?.errors?.['required']"
+                >Precio requerido.</small
               >
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="imagen" class="form-label">Imagen</label>
+            <input
+              type="imagen"
+              formControlName="imagen"
+              class="form-control"
+              id="imagen"
+              placeholder="Ingresa la url de la imagen del producto"
+            />
+            <div
+              *ngIf="
+                contactForm.get('imagen')?.invalid &&
+                (contactForm.get('imagen')?.touched ||
+                  contactForm.get('imagen')?.dirty)
+              "
+              class="text-danger"
+            >
+              <small *ngIf="contactForm.get('imagen')?.errors?.['required']"
+                >Imagen del producto requerida.</small
+              >
+            </div>
+          </div>
+
           <button
             type="submit"
             class="btn btn-primary container-sm"
             [disabled]="contactForm.invalid"
           >
-            Crear cuenta
+            Crear producto
           </button>
         </form>
       </div>

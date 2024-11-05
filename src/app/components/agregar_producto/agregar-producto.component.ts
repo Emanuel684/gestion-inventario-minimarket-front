@@ -8,11 +8,7 @@ import {
   Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-// import { ToastrService } from 'ngx-toastr';
-// import { ContactService } from '../../../services/contact.service';
-import { CategoryService } from '../../services/category.service'
-import { UsuariosService } from '../../services/usuarios.services'
-// import { UserProfileService } from '../../../services/user-profile.service';
+import { ProductosService } from '../../services/productos.services'
 
 @Component({
   selector: 'app-agregar-producto',
@@ -28,17 +24,14 @@ export class AgregarProductoComponent implements OnInit {
   userId = 0
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryService,
-    // private contactService: ContactService,
-    // private toastrService: ToastrService,
-    private loginService: UsuariosService,
-    // private userService:UserProfileService
+    private productosService: ProductosService,
   ) {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
+      nombre: ['', Validators.required],
+      tipo: ['', [Validators.required]],
+      sub_tipo: ['', Validators.required],
+      precio: ['', Validators.required],
+      imagen: ['', Validators.required],
     })
   }
 
@@ -49,9 +42,8 @@ export class AgregarProductoComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
       console.log('onSubmit: ')
-      this.loginService.postUsuario()
+      this.productosService.postProducto(this.contactForm.value)
       // console.log('result: ', result)
       // this.contactService.sendMessage(this.contactForm.value).subscribe(
       //   (response) => {

@@ -28,6 +28,7 @@
                   <button
                 type="submit"
                 class="w-100 btn btn-lg btn-primary"
+                (click)="deleteProducto(item)"
                 
               >
                 Eliminar
@@ -35,6 +36,17 @@
                 </th>
               </tr>
             }
+            <tr>
+              <th scope="row" class="text-start">
+                
+              </th>
+              <th scope="row" class="text-start"></th>
+              <th scope="row" class="text-start"></th>
+              <th scope="row" class="text-start">{{ total_compras }}</th>
+              <th scope="row" class="text-start">
+                
+              </th>
+            </tr>
           </tbody>
         </table>
       </div>
