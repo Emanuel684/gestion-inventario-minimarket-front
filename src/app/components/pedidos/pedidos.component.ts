@@ -13,20 +13,9 @@ import {
   Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-import { UsuariosService } from '../../services/usuarios.services'
 import { ProductosComponent } from '../productos/productos.component'
 import { PedidosService } from '../../services/pedidos.services'
-import {
-  LocalStorageService,
-  SessionStorageService,
-  // LocalStorage,
-  // SessionStorage,
-} from 'angular-web-storage'
-
-// import { TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
 import { ViewChild, ViewContainerRef } from '@angular/core'
-import { ModalService } from '../modal/modal.service'
-// import { ModalContentComponent } from '../modal-content/modal-content.component'
 import {
   ButtonCloseDirective,
   ButtonDirective,
@@ -37,7 +26,6 @@ import {
   ModalTitleDirective,
   ThemeDirective,
 } from '@coreui/angular'
-import { provideAnimations } from '@angular/platform-browser/animations'
 
 @Component({
   selector: 'app-pedidos',
@@ -92,11 +80,7 @@ export class PedidosComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private usuariosService: UsuariosService,
     private pedidosService: PedidosService,
-    private local: LocalStorageService,
-    private session: SessionStorageService,
-    private modalService: ModalService,
   ) {
     this.contactForm = this.fb.group({
       direccion: ['', Validators.required],
@@ -107,19 +91,6 @@ export class PedidosComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log('contactForm: ', this.contactForm)
-      // console.log(this.contactForm.value)
-      // console.log('onSubmit: ')
-      // this.loginService.postUsuario()
-      // console.log('result: ', result)
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
     }
   }
 
@@ -135,7 +106,6 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ngOnInit pedidos')
-    // this.calTotal()
     this.resultados_pedidos = this.pedidosService.getAllPedidos()
     console.log('resultados_pedidos: ', this.resultados_pedidos)
   }
@@ -145,43 +115,4 @@ export class PedidosComponent implements OnInit {
 
     this.pedidosService.deletePedido(evento)
   }
-
-  // openModalTemplate(view: TemplateRef<Element>) {
-  //   this.modalService.open(this.vcr, view, {
-  //     animations: {
-  //       modal: {
-  //         enter: 'enter-slide-down 0.8s',
-  //       },
-  //       overlay: {
-  //         enter: 'fade-in 0.8s',
-  //         leave: 'fade-out 0.3s forwards',
-  //       },
-  //     },
-  //     size: {
-  //       width: '40rem',
-  //     },
-  //   })
-  // }
-
-  // openModalComponent() {
-  //   this.modalService.open(ModalContentComponent, {
-  //     animations: {
-  //       modal: {
-  //         enter: 'enter-scaling 0.3s ease-out',
-  //         leave: 'fade-out 0.1s forwards',
-  //       },
-  //       overlay: {
-  //         enter: 'fade-in 1s',
-  //         leave: 'fade-out 0.3s forwards',
-  //       },
-  //     },
-  //     size: {
-  //       width: '40rem',
-  //     },
-  //   })
-  // }
-
-  // close() {
-  //   this.modalService.close()
-  // }
 }
