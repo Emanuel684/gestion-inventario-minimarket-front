@@ -38,7 +38,7 @@ export class UsuariosService {
 
     var response = {}
 
-    var result = this.http
+    this.http
       .post(`${this.baseUrl}/${complemento}`, bodyU)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -51,13 +51,9 @@ export class UsuariosService {
         }),
       )
       .subscribe((data) => {
-        // this.postId = data.id;
         response = data
-        console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
     return response
   }
 
@@ -65,18 +61,13 @@ export class UsuariosService {
   value: any = null
 
   getUsuario(formualario: any) {
-    // @LocalStorage() localValue: Object = { text: `Hello ${+new Date}`};
-    // // 设置存储KEY，以及10个小时后过期
-    // @LocalStorage('newKey', 10, 'h') localValue2: Object = { text: `Hello ${+new Date}`};
-    // @SessionStorage() sessionValue: string = `Hello ${+new Date}`;
-
     this.local.set(this.KEY, { a: 1, now: +new Date() }, 20, 's')
 
     var complemento: String = 'iniciar-sesion'
     var email = 'emanuelacag@gmail.com'
     var response
 
-    var result = this.http
+    this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -96,16 +87,12 @@ export class UsuariosService {
           's',
         )
         if (data.password == formualario.password) {
-          console.log('validation pass')
           this.local.set('login', { validation: true }, 20, 's')
         }
 
         response = data
-        console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
     return response
   }
 
@@ -141,12 +128,12 @@ export class UsuariosService {
     var email: String = 'carlosacag@gmail.com'
     var response
 
-    var result = this.http
+    this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
           // this.errorMessage = error.message;
-          // console.error('There was an error!', error)
+          console.error('There was an error!', error)
 
           // after handling error, return a new observable
           // that doesn't emit any values and completes
@@ -155,11 +142,7 @@ export class UsuariosService {
       )
       .subscribe((data) => {
         response = data
-        // console.log('data getUsuariosTienda: ', data)
       })
-
-    // console.log('result getUsuariosTienda: ', result)
-    // console.log('response getUsuariosTienda: ', response)
     return response
   }
 

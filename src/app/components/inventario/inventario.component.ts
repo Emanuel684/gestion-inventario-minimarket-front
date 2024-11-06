@@ -20,8 +20,6 @@ export class InventarioComponent implements OnInit {
   constructor(private productosService: ProductosService) {}
 
   ngOnInit(): void {
-    console.log('oninit')
     this.productos = this.productosService.getAllProductos()
-    // this.userId = this.loginService.userId;
   }
 }

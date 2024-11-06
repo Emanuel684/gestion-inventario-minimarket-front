@@ -1,4 +1,4 @@
-import { CommonModule, formatCurrency } from '@angular/common'
+import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import {
   FormBuilder,
@@ -8,11 +8,7 @@ import {
   Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-// import { ToastrService } from 'ngx-toastr';
-// import { ContactService } from '../../../services/contact.service';
-import { CategoryService } from '../../services/category.service'
 import { UsuariosService } from '../../services/usuarios.services'
-// import { UserProfileService } from '../../../services/user-profile.service';
 
 @Component({
   selector: 'app-cosas-interesantes',
@@ -27,11 +23,7 @@ export class CosasInteresantesComponent implements OnInit {
   userId = 0
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryService,
-    // private contactService: ContactService,
-    // private toastrService: ToastrService,
     private loginService: UsuariosService,
-    // private userService:UserProfileService
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
@@ -43,23 +35,11 @@ export class CosasInteresantesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('oninit')
-    // this.userId = this.loginService.userId;
   }
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('onSubmit', this.contactForm.value)
       this.loginService.postUsuario()
-      // console.log('result: ', result)
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
     }
   }
 }

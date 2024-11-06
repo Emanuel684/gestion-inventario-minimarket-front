@@ -1,20 +1,9 @@
-import {
-  CommonModule,
-  // formatCurrency
-} from '@angular/common'
+import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
-import {
-  // FormBuilder,
-  // FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  // Validators,
-} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-// import { ToastrService } from 'ngx-toastr';
-// import { UsuariosService } from '../../services/usuarios.services'
 import { ProductosService } from '../../services/productos.services'
-import { LocalStorageService, SessionStorageService } from 'angular-web-storage'
+import { LocalStorageService } from 'angular-web-storage'
 
 @Component({
   selector: 'app-negocio',
@@ -35,27 +24,9 @@ export class NegocioComponent implements OnInit {
   constructor(
     private productosService: ProductosService,
     private local: LocalStorageService,
-    private session: SessionStorageService,
   ) {}
 
   addProducto(evento: any): void {
-    // const result = this.productos_carrito.filter(
-    //   (item: any) => item.id == evento.id,
-    // )
-    // console.log('result: ', result)
-
-    // if (result.length == 0) {
-    //   console.log('Field is updated!')
-    //   evento.cantidad = 1
-    //   console.log(evento)
-    //   this.productos_carrito.push(evento)
-    // } else {
-    //   console.log('result1: ', result[0])
-    //   evento.cantidad = result[0].cantidad + 1
-    //   console.log(evento)
-    //   this.productos_carrito.push()
-    // }
-
     this.productos_carrito.push(evento)
 
     this.local.set(

@@ -34,13 +34,13 @@
                       Eliminar
                     </button>
                   </a>
-
-                  <!-- <button type="submit" class="w-100 btn btn-lg btn-primary" (click)="deleteProducto(item.id)">
-                    Eliminar
-                  </button> -->
                 </th>
                 <th scope="row" class="text-start">
-                  <button type="submit" class="w-100 btn btn-lg btn-primary">
+                  <button
+                    (click)="toggleLiveDemo()"
+                    class="w-100 btn btn-lg btn-primary"
+                    cButton
+                  >
                     Más
                   </button>
                 </th>
@@ -49,7 +49,6 @@
           </tbody>
         </table>
       </div>
-      <button (click)="toggleLiveDemo()" cButton>Launch demo modal</button>
 
       <c-modal
         id="liveDemoModal"

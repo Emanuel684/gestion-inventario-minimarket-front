@@ -17,7 +17,7 @@ export class TiendasService {
     var email = '6717c09a4f00c9c785619f29'
     var response
 
-    var result = this.http
+    this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -31,11 +31,8 @@ export class TiendasService {
       )
       .subscribe((data) => {
         response = data
-        console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
     return response
   }
 
