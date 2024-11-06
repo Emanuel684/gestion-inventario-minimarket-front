@@ -25,6 +25,7 @@ import { ContactanosComponent } from './components/contactanos/contactanos.compo
 import { CheckOutComponent } from './components/check-out/check-out.component'
 import { AgregarProductoComponent } from './components/agregar_producto/agregar-producto.component'
 import { PedidosComponent } from './components/pedidos/pedidos.component'
+import { ModalComponent } from './components/modal/modal.component'
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     CheckOutComponent,
+    ModalComponent,
   ],
   exports: [RouterModule],
   bootstrap: [RouterModule],

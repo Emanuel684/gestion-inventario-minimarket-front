@@ -23,10 +23,34 @@ import {
   // SessionStorage,
 } from 'angular-web-storage'
 
+// import { TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
+import { ViewChild, ViewContainerRef } from '@angular/core'
+import { ModalService } from '../modal/modal.service'
+// import { ModalContentComponent } from '../modal-content/modal-content.component'
+import {
+  ButtonCloseDirective,
+  ButtonDirective,
+  ModalBodyComponent,
+  ModalComponent,
+  ModalFooterComponent,
+  ModalHeaderComponent,
+  ModalTitleDirective,
+  ThemeDirective,
+} from '@coreui/angular'
+import { provideAnimations } from '@angular/platform-browser/animations'
+
 @Component({
   selector: 'app-pedidos',
   standalone: true,
   imports: [
+    ButtonDirective,
+    ModalComponent,
+    ModalHeaderComponent,
+    ModalTitleDirective,
+    ThemeDirective,
+    ButtonCloseDirective,
+    ModalBodyComponent,
+    ModalFooterComponent,
     RouterModule,
     ReactiveFormsModule,
     CommonModule,
@@ -35,10 +59,14 @@ import {
   ],
   templateUrl: './pedidos.component.html',
   styleUrl: './pedidos.component.css',
+
   host: { ngSkipHydration: 'true' },
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PedidosComponent implements OnInit {
+  @ViewChild('view', { static: true, read: ViewContainerRef })
+  vcr!: ViewContainerRef
+
   contactForm!: FormGroup
   title = 'Pedidos'
 
@@ -68,6 +96,7 @@ export class PedidosComponent implements OnInit {
     private pedidosService: PedidosService,
     private local: LocalStorageService,
     private session: SessionStorageService,
+    private modalService: ModalService,
   ) {
     this.contactForm = this.fb.group({
       direccion: ['', Validators.required],
@@ -94,6 +123,16 @@ export class PedidosComponent implements OnInit {
     }
   }
 
+  public visible = false
+
+  toggleLiveDemo() {
+    this.visible = !this.visible
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event
+  }
+
   ngOnInit(): void {
     console.log('ngOnInit pedidos')
     // this.calTotal()
@@ -106,4 +145,43 @@ export class PedidosComponent implements OnInit {
 
     this.pedidosService.deletePedido(evento)
   }
+
+  // openModalTemplate(view: TemplateRef<Element>) {
+  //   this.modalService.open(this.vcr, view, {
+  //     animations: {
+  //       modal: {
+  //         enter: 'enter-slide-down 0.8s',
+  //       },
+  //       overlay: {
+  //         enter: 'fade-in 0.8s',
+  //         leave: 'fade-out 0.3s forwards',
+  //       },
+  //     },
+  //     size: {
+  //       width: '40rem',
+  //     },
+  //   })
+  // }
+
+  // openModalComponent() {
+  //   this.modalService.open(ModalContentComponent, {
+  //     animations: {
+  //       modal: {
+  //         enter: 'enter-scaling 0.3s ease-out',
+  //         leave: 'fade-out 0.1s forwards',
+  //       },
+  //       overlay: {
+  //         enter: 'fade-in 1s',
+  //         leave: 'fade-out 0.3s forwards',
+  //       },
+  //     },
+  //     size: {
+  //       width: '40rem',
+  //     },
+  //   })
+  // }
+
+  // close() {
+  //   this.modalService.close()
+  // }
 }
