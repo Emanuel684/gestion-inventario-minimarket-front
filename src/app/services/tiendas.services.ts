@@ -12,13 +12,11 @@ export class TiendasService {
 
   constructor(private http: HttpClient) {}
 
-  getTiendaInfo() {
+  async getTiendaInfo(identificador: any = '6717c09a4f00c9c785619f29') {
     var complemento: String = 'tienda-identificador'
-    var email = '6717c09a4f00c9c785619f29'
-    var response
 
-    this.http
-      .get(`${this.baseUrl}/${complemento}/${email}`)
+    var resultado = await this.http
+      .get(`${this.baseUrl}/${complemento}/${identificador}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
           // this.errorMessage = error.message;
@@ -29,11 +27,9 @@ export class TiendasService {
           return of()
         }),
       )
-      .subscribe((data) => {
-        response = data
-      })
+      .toPromise()
 
-    return response
+    return resultado
   }
 
   getTiendas(): Observable<CourseCategory[]> {

@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { ProductosComponent } from '../productos/productos.component'
 import { PedidosService } from '../../services/pedidos.services'
+import { TiendasService } from '../../services/tiendas.services'
+import { UsuariosService } from '../../services/usuarios.services'
 import { ViewChild, ViewContainerRef } from '@angular/core'
 import {
   ButtonCloseDirective,
@@ -20,6 +22,7 @@ import {
   ModalTitleDirective,
   ThemeDirective,
 } from '@coreui/angular'
+import { ProductosService } from '../../services/productos.services'
 
 @Component({
   selector: 'app-pedidos',
@@ -54,27 +57,45 @@ export class PedidosComponent implements OnInit {
   resultados_pedidos: any = {
     msg: 'Se obtuvo el resultado exitosamente.',
     success: true,
-    data: [
-      {
-        id: '672a9266687e378ff111c27d',
-        id_tienda: '662d0d325363bbc93a0c0295',
-        id_cliente: '662d0d325363bbc93a0c0295',
-        productos: '662d0d325363bbc93a0c0295,662d0d325363bbc93a0c0295',
-        precio_total: '700',
-        direccion: 'UNDER DECOMMISSIONING',
-        fecha_entrega: '1966-04-28T00:00:00',
-        fecha_creacion: '1966-04-28T00:00:00',
-        fecha_actualizacion: '1966-04-28T00:00:00',
-      },
-    ],
+    data: [{}],
   }
 
-  constructor(private pedidosService: PedidosService) {}
+  constructor(
+    private pedidosService: PedidosService,
+    private usuariosService: UsuariosService,
+    private tiendasService: TiendasService,
+    private productosService: ProductosService,
+  ) {}
 
   public visible = false
+  public productos_model: any = []
+  public tienda_model: any = {}
+  public usuario_model: any = {}
 
-  toggleLiveDemo() {
+  async toggleLiveDemo(item: any) {
     this.visible = !this.visible
+
+    this.usuario_model = await this.usuariosService.getUsuario(
+      item['id_cliente'],
+    )
+
+    this.tienda_model = await this.tiendasService.getTiendaInfo(
+      item['id_tienda'],
+    )
+
+    const idArray = item['productos'].split(',')
+    for (const element of idArray) {
+      var producto_consultado =
+        await this.productosService.getProductoById(element)
+      this.productos_model.push(producto_consultado['data'])
+    }
+  }
+
+  toggleLiveDemoClose() {
+    this.visible = !this.visible
+    this.productos_model = []
+    this.tienda_model = {}
+    this.usuario_model = {}
   }
 
   handleLiveDemoChange(event: any) {

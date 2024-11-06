@@ -14,8 +14,6 @@ export class PedidosService {
   constructor(private http: HttpClient) {}
 
   deletePedido(identificador: any) {
-    console.log('deletePedido: ', identificador)
-
     var complemento: String = 'eliminar-pedido'
 
     var response = {}
@@ -33,22 +31,13 @@ export class PedidosService {
         }),
       )
       .subscribe((data) => {
-        // this.postId = data.id;
         response = data
-        console.log('data delete: ', data)
       })
 
-    // result = this.getAllPedidos()
-
-    // console.log('result delete: ', result)
-    console.log('response delete: ', response)
     return response
   }
 
   postPedido(formValues: any, valorTotal: any, productos: any) {
-    console.log('postPedido: ', formValues)
-    console.log('productos: ', productos)
-
     var bodyU = {
       direccion: formValues['direccion'],
       fecha_actualizacion: '1966-04-28T00:00:00',
@@ -64,8 +53,7 @@ export class PedidosService {
     var complemento: String = 'crear-pedido'
 
     var response = {}
-
-    var result = this.http
+    this.http
       .post(`${this.baseUrl}/${complemento}`, bodyU)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -78,13 +66,9 @@ export class PedidosService {
         }),
       )
       .subscribe((data) => {
-        // this.postId = data.id;
         response = data
-        console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
     return response
   }
 
@@ -106,11 +90,8 @@ export class PedidosService {
       )
       .subscribe((data) => {
         response = data
-        console.log('data: ', data)
       })
 
-    // console.log('result: ', result)
-    console.log('response: ', response)
     return response
   }
 

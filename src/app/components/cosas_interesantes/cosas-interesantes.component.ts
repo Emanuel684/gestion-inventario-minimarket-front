@@ -1,14 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-import { UsuariosService } from '../../services/usuarios.services'
 
 @Component({
   selector: 'app-cosas-interesantes',
@@ -19,27 +12,11 @@ import { UsuariosService } from '../../services/usuarios.services'
   host: { ngSkipHydration: 'true' },
 })
 export class CosasInteresantesComponent implements OnInit {
-  contactForm!: FormGroup
+  title = 'CosasInteresantes'
   userId = 0
-  constructor(
-    private fb: FormBuilder,
-    private loginService: UsuariosService,
-  ) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
-    })
-  }
+  constructor() {}
 
   ngOnInit(): void {
     console.log('oninit')
-  }
-
-  onSubmit() {
-    if (this.contactForm.valid) {
-      this.loginService.postUsuario()
-    }
   }
 }

@@ -3,13 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { catchError, Observable, of } from 'rxjs'
 import { environment } from '../../environments/environment'
 import { CourseCategory } from '../models/category'
-// import { url } from 'inspector'
-import {
-  LocalStorageService,
-  SessionStorageService,
-  LocalStorage,
-  SessionStorage,
-} from 'angular-web-storage'
+import { LocalStorageService } from 'angular-web-storage'
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +14,6 @@ export class UsuariosService {
   constructor(
     private http: HttpClient,
     private local: LocalStorageService,
-    private session: SessionStorageService,
   ) {}
 
   postUsuario() {
@@ -60,14 +53,13 @@ export class UsuariosService {
   KEY = 'value'
   value: any = null
 
-  getUsuario(formualario: any) {
+  async getUsuario(formualario: any) {
     this.local.set(this.KEY, { a: 1, now: +new Date() }, 20, 's')
 
     var complemento: String = 'iniciar-sesion'
     var email = 'emanuelacag@gmail.com'
-    var response
 
-    this.http
+    var resultado = await this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -79,21 +71,19 @@ export class UsuariosService {
           return of()
         }),
       )
-      .subscribe((data) => {
-        this.local.set(
-          'login_data',
-          { validation: true, data_user: data },
-          20,
-          's',
-        )
-        if (data.password == formualario.password) {
-          this.local.set('login', { validation: true }, 20, 's')
-        }
+      .toPromise()
 
-        response = data
-      })
+    this.local.set(
+      'login_data',
+      { validation: true, data_user: resultado },
+      20,
+      's',
+    )
+    if (resultado['password'] == formualario.password) {
+      this.local.set('login', { validation: true }, 20, 's')
+    }
 
-    return response
+    return resultado
   }
 
   getTenderoInfo() {
@@ -115,11 +105,8 @@ export class UsuariosService {
       )
       .subscribe((data) => {
         response = data
-        console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
     return response
   }
 

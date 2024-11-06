@@ -8,7 +8,6 @@ import { CourseCategory } from '../models/category'
 })
 export class CategoryService {
   private baseUrl = `${environment.apiUrl}/CourseCategory`
-  //   private apiUrl = `${environment.apiUrl}`
 
   constructor(private http: HttpClient) {}
 

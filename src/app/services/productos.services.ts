@@ -19,12 +19,10 @@ export class ProductosService {
       id: '662d0d325363bbc93a0c0295',
     }
     var bodyU = Object.assign({}, base, producto)
-
     var complemento: String = 'crear-producto'
 
     var response = {}
-
-    var result = this.http
+    this.http
       .post(`${this.baseUrl}/${complemento}`, bodyU)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -37,14 +35,30 @@ export class ProductosService {
         }),
       )
       .subscribe((data) => {
-        // this.postId = data.id;
         response = data
-        console.log('data: ', data)
       })
 
-    console.log('result: ', result)
-    console.log('response: ', response)
     return response
+  }
+
+  async getProductoById(identificador: string) {
+    var complemento: String = 'producto-identificador'
+
+    var resultado = await this.http
+      .get(`${this.baseUrl}/${complemento}/${identificador}`)
+      .pipe(
+        catchError((error: any, caught: Observable<any>): Observable<any> => {
+          // this.errorMessage = error.message;
+          console.error('There was an error!', error)
+
+          // after handling error, return a new observable
+          // that doesn't emit any values and completes
+          return of()
+        }),
+      )
+      .toPromise()
+
+    return resultado
   }
 
   getAllProductos() {
@@ -65,11 +79,8 @@ export class ProductosService {
       )
       .subscribe((data) => {
         response = data
-        // console.log('data: ', data)
       })
 
-    // console.log('result: ', result)
-    // console.log('response: ', response)
     return response
   }
 

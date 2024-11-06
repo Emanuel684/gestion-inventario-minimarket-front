@@ -37,23 +37,11 @@ export class AgregarProductoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('oninit')
-    // this.userId = this.loginService.userId;
   }
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('onSubmit: ')
       this.productosService.postProducto(this.contactForm.value)
-      // console.log('result: ', result)
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
     }
   }
 }

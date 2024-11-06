@@ -16,12 +16,7 @@ import { RouterModule } from '@angular/router'
 import { UsuariosService } from '../../services/usuarios.services'
 import { ProductosComponent } from '../productos/productos.component'
 import { PedidosService } from '../../services/pedidos.services'
-import {
-  LocalStorageService,
-  SessionStorageService,
-  LocalStorage,
-  SessionStorage,
-} from 'angular-web-storage'
+import { LocalStorageService, SessionStorageService } from 'angular-web-storage'
 
 @Component({
   selector: 'app-check-out',
