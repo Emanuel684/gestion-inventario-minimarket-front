@@ -63,10 +63,14 @@ export class TenderoComponent implements OnInit {
     private fb: FormBuilder,
   ) {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
+      pais: ['', Validators.required],
+      ciudad: ['', Validators.required],
+      telefonoFijo: ['', Validators.required],
+      telefonoCelular: ['', Validators.required],
+      direccion: ['', Validators.required],
+      nombre: ['', Validators.required],
+      horaFinal: ['', Validators.required],
+      horaInicial: ['', Validators.required],
     })
   }
 

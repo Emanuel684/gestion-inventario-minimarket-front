@@ -11,24 +11,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.nombre }}
             </h1>
-            <label for="name" class="form-label">Nombre Tienda</label>
+            <label for="nombre" class="form-label">Nombre Tienda</label>
             <input
               type="text"
-              formControlName="name"
+              formControlName="nombre"
               class="form-control"
-              id="name"
-              placeholder="Ingresa tu nombre completo"
+              id="nombre"
+              placeholder="Ingresa el nombre de la tienda"
             />
             <div
               *ngIf="
-                contactForm.get('name')?.invalid &&
-                (contactForm.get('name')?.touched ||
-                  contactForm.get('name')?.dirty)
+                contactForm.get('nombre')?.invalid &&
+                (contactForm.get('nombre')?.touched ||
+                  contactForm.get('nombre')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('name')?.errors?.['required']"
-                >Nombre completo requerido.</small
+              <small *ngIf="contactForm.get('nombre')?.errors?.['required']"
+                >Nombre requerido.</small
               >
             </div>
           </div>
@@ -40,27 +40,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.direccion }}
             </h1>
-            <label for="email" class="form-label">Dirección</label>
+            <label for="direccion" class="form-label">Dirección</label>
             <input
-              type="email"
-              formControlName="email"
+              type="text"
+              formControlName="direccion"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="direccion"
+              placeholder="Ingresa tu dirección"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('direccion')?.invalid &&
+                (contactForm.get('direccion')?.touched ||
+                  contactForm.get('direccion')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('direccion')?.errors?.['required']"
+                >Dirección requerida.</small
               >
             </div>
           </div>
@@ -72,27 +69,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.celular }}
             </h1>
-            <label for="email" class="form-label">Telefono Celular</label>
+            <label for="telefonoCelular" class="form-label">Telefono Celular</label>
             <input
-              type="email"
-              formControlName="email"
+              type="number"
+              formControlName="telefonoCelular"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="telefonoCelular"
+              placeholder="Ingresa tu telefono celular"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('telefonoCelular')?.invalid &&
+                (contactForm.get('telefonoCelular')?.touched ||
+                  contactForm.get('telefonoCelular')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('telefonoCelular')?.errors?.['required']"
+                >Telefono celular requerido.</small
               >
             </div>
           </div>
@@ -104,27 +98,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.telefono }}
             </h1>
-            <label for="email" class="form-label">Telefono Fijo</label>
+            <label for="telefonoFijo" class="form-label">Telefono Fijo</label>
             <input
-              type="email"
-              formControlName="email"
+              type="number"
+              formControlName="telefonoFijo"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="telefonoFijo"
+              placeholder="Ingresa tu telefono fijo"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('telefonoFijo')?.invalid &&
+                (contactForm.get('telefonoFijo')?.touched ||
+                  contactForm.get('telefonoFijo')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('telefonoFijo')?.errors?.['required']"
+                >Telefono fijo requerido.</small
               >
             </div>
           </div>
@@ -136,27 +127,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.hora_inicio }}
             </h1>
-            <label for="email" class="form-label">Hora de inicio</label>
+            <label for="horaInicial" class="form-label">Hora de inicio</label>
             <input
-              type="email"
-              formControlName="email"
+              type="text"
+              formControlName="horaInicial"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="horaInicial"
+              placeholder="Ingresa la hora inicio de trabajo del negocio"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('horaInicial')?.invalid &&
+                (contactForm.get('horaInicial')?.touched ||
+                  contactForm.get('horaInicial')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('horaInicial')?.errors?.['required']"
+                >Hora de inicio de trabajo requerida.</small
               >
             </div>
           </div>
@@ -168,27 +156,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.hora_fin }}
             </h1>
-            <label for="email" class="form-label">Hora de final</label>
+            <label for="horaFinal" class="form-label">Hora de final</label>
             <input
-              type="email"
-              formControlName="email"
+              type="text"
+              formControlName="horaFinal"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="horaFinal"
+              placeholder="Ingresa la hora final de trabajo"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('horaFinal')?.invalid &&
+                (contactForm.get('horaFinal')?.touched ||
+                  contactForm.get('horaFinal')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('horaFinal')?.errors?.['required']"
+                >Hora final requerida.</small
               >
             </div>
           </div>
@@ -200,27 +185,24 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.ciudad }}
             </h1>
-            <label for="email" class="form-label">Ciudad</label>
+            <label for="ciudad" class="form-label">Ciudad</label>
             <input
-              type="email"
-              formControlName="email"
+              type="text"
+              formControlName="ciudad"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="ciudad"
+              placeholder="Ingresa tu ciudad"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('ciudad')?.invalid &&
+                (contactForm.get('ciudad')?.touched ||
+                  contactForm.get('ciudad')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+              <small *ngIf="contactForm.get('ciudad')?.errors?.['required']"
+                >Ciudad es querida.</small
               >
             </div>
           </div>
@@ -234,30 +216,24 @@
             </h1>
             <label for="email" class="form-label">Pais</label>
             <input
-              type="email"
-              formControlName="email"
+              type="text"
+              formControlName="pais"
               class="form-control"
-              id="email"
-              placeholder="Ingresa tu email"
+              id="pais"
+              placeholder="Ingresa tu pais"
             />
             <div
               *ngIf="
-                contactForm.get('email')?.invalid &&
-                (contactForm.get('email')?.touched ||
-                  contactForm.get('email')?.dirty)
+                contactForm.get('pais')?.invalid &&
+                (contactForm.get('pais')?.touched ||
+                  contactForm.get('pais')?.dirty)
               "
               class="text-danger"
             >
               <small *ngIf="contactForm.get('email')?.errors?.['required']"
-                >Email is required.</small
-              >
-              <small *ngIf="contactForm.get('email')?.errors?.['email']"
-                >Email invalido.</small
+                >Pais es requerido.</small
               >
             </div>
-            <h1 class="text-body-emphasis">
-              {{ resultado_tienda?.data.nombre }}
-            </h1>
           </div>
 
           <hr class="col-3 col-md-2 mb-5" />
