@@ -155,7 +155,11 @@ export class CheckOutComponent implements OnInit {
   }
 
   pagarProductos(): void {
-    this.pedidosService.postPedido(this.contactForm.value)
+    this.pedidosService.postPedido(
+      this.contactForm.value,
+      this.total_compras,
+      this.respuesta_clientes['data'],
+    )
 
     this.local.set(
       'productos_usuario',

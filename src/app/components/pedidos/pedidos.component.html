@@ -25,16 +25,19 @@
                   {{ item.fecha_creacion }}
                 </th>
                 <th scope="row" class="text-start">
-                  <!-- <button
-                    type="submit"
-                    class="w-100 btn btn-lg btn-primary"
-                    (click)="deleteProducto(item)"
-                  >
+                  <a type="button" href="/pedidos">
+                    <button
+                      type="submit"
+                      class="w-100 btn btn-lg btn-primary"
+                      (click)="deleteProducto(item.id)"
+                    >
+                      Eliminar
+                    </button>
+                  </a>
+
+                  <!-- <button type="submit" class="w-100 btn btn-lg btn-primary" (click)="deleteProducto(item.id)">
                     Eliminar
                   </button> -->
-                  <button type="submit" class="w-100 btn btn-lg btn-primary">
-                    Eliminar
-                  </button>
                 </th>
                 <th scope="row" class="text-start">
                   <button type="submit" class="w-100 btn btn-lg btn-primary">

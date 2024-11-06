@@ -48,8 +48,7 @@ export class CosasInteresantesComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value)
-      console.log('onSubmit: ')
+      console.log('onSubmit', this.contactForm.value)
       this.loginService.postUsuario()
       // console.log('result: ', result)
       // this.contactService.sendMessage(this.contactForm.value).subscribe(

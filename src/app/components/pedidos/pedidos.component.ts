@@ -94,20 +94,6 @@ export class PedidosComponent implements OnInit {
     }
   }
 
-  // calTotal() {
-  //   this.respuesta_clientes = this.local.get('productos_usuario')
-
-  //   var total_p = 0
-
-  //   for (const property of this.respuesta_clientes['data']) {
-  //     console.log(`${property}`)
-  //     total_p = total_p + parseInt(property['precio'])
-  //   }
-
-  //   this.total_compras = total_p.toString()
-  //   console.log('this.respuesta_clientes: ', this.respuesta_clientes)
-  // }
-
   ngOnInit(): void {
     console.log('ngOnInit pedidos')
     // this.calTotal()
@@ -115,45 +101,9 @@ export class PedidosComponent implements OnInit {
     console.log('resultados_pedidos: ', this.resultados_pedidos)
   }
 
-  // deleteProducto(evento: any): void {
-  //   const result = this.respuesta_clientes['data'].filter(
-  //     (item: any) => item.id == evento.id,
-  //   )
+  deleteProducto(evento: any): void {
+    console.log('deleteProducto: ', evento)
 
-  //   if (result.length == 0) {
-  //     console.log('Field is updated!')
-  //   } else {
-  //     function removeValue(value: any, index: any, arr: any) {
-  //       // If the value at the current array index matches the specified value (2)
-  //       if (value == result[0]) {
-  //         // Removes the value from the original array
-  //         arr.splice(index, 1)
-  //         return true
-  //       }
-  //       return false
-  //     }
-  //     const x = this.respuesta_clientes['data'].filter(removeValue)
-  //   }
-
-  //   this.local.set(
-  //     'productos_usuario',
-  //     { data: this.respuesta_clientes['data'] },
-  //     20,
-  //     's',
-  //   )
-
-  //   // Calculamos la valor todal despues de eliminar un producto
-  //   this.calTotal()
-  // }
-
-  pagarProductos(): void {
-    this.pedidosService.postPedido(this.contactForm.value)
-
-    // this.local.set(
-    //   'productos_usuario',
-    //   { data: this.respuesta_clientes },
-    //   20,
-    //   's',
-    // )
+    this.pedidosService.deletePedido(evento)
   }
 }

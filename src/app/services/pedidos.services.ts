@@ -13,19 +13,52 @@ export class PedidosService {
 
   constructor(private http: HttpClient) {}
 
-  postPedido(formValues: any) {
-    console.log('postPedido')
+  deletePedido(identificador: any) {
+    console.log('deletePedido: ', identificador)
+
+    var complemento: String = 'eliminar-pedido'
+
+    var response = {}
+
+    this.http
+      .delete(`${this.baseUrl}/${complemento}/${identificador}`)
+      .pipe(
+        catchError((error: any, caught: Observable<any>): Observable<any> => {
+          // this.errorMessage = error.message;
+          console.error('There was an error!', error)
+
+          // after handling error, return a new observable
+          // that doesn't emit any values and completes
+          return of()
+        }),
+      )
+      .subscribe((data) => {
+        // this.postId = data.id;
+        response = data
+        console.log('data delete: ', data)
+      })
+
+    // result = this.getAllPedidos()
+
+    // console.log('result delete: ', result)
+    console.log('response delete: ', response)
+    return response
+  }
+
+  postPedido(formValues: any, valorTotal: any, productos: any) {
+    console.log('postPedido: ', formValues)
+    console.log('productos: ', productos)
 
     var bodyU = {
-      direccion: 'UNDER DECOMMISSIONING',
+      direccion: formValues['direccion'],
       fecha_actualizacion: '1966-04-28T00:00:00',
       fecha_creacion: '1966-04-28T00:00:00',
-      fecha_entrega: '1966-04-28T00:00:00',
+      fecha_entrega: formValues['fechaEntrega'] + 'T00:00:00',
       id: '662d0d325363bbc93a0c0295',
       id_cliente: '662d0d325363bbc93a0c0295',
       id_tienda: '662d0d325363bbc93a0c0295',
-      precio_total: '700',
-      productos: '662d0d325363bbc93a0c0295,662d0d325363bbc93a0c0295',
+      precio_total: valorTotal,
+      productos: productos.map((item: { id: any }) => item.id).join(','),
     }
 
     var complemento: String = 'crear-pedido'

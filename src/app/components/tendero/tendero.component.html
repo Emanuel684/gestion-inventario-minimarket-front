@@ -69,7 +69,9 @@
             <h1 class="text-body-emphasis">
               {{ resultado_tienda?.data.celular }}
             </h1>
-            <label for="telefonoCelular" class="form-label">Telefono Celular</label>
+            <label for="telefonoCelular" class="form-label"
+              >Telefono Celular</label
+            >
             <input
               type="number"
               formControlName="telefonoCelular"
@@ -85,7 +87,8 @@
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('telefonoCelular')?.errors?.['required']"
+              <small
+                *ngIf="contactForm.get('telefonoCelular')?.errors?.['required']"
                 >Telefono celular requerido.</small
               >
             </div>
@@ -114,7 +117,8 @@
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('telefonoFijo')?.errors?.['required']"
+              <small
+                *ngIf="contactForm.get('telefonoFijo')?.errors?.['required']"
                 >Telefono fijo requerido.</small
               >
             </div>
@@ -143,7 +147,8 @@
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('horaInicial')?.errors?.['required']"
+              <small
+                *ngIf="contactForm.get('horaInicial')?.errors?.['required']"
                 >Hora de inicio de trabajo requerida.</small
               >
             </div>
