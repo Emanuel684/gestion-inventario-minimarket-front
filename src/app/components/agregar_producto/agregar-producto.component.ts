@@ -38,13 +38,13 @@ export class AgregarProductoComponent implements OnInit {
     private fb: FormBuilder,
     private productosService: ProductosService,
     private snackBar: MatSnackBar,
-    private _router: Router,
   ) {
     this.contactForm = this.fb.group({
       nombre: ['', Validators.required],
       tipo: ['', [Validators.required]],
       sub_tipo: ['', Validators.required],
       precio: ['', Validators.required],
+      cantidadProductos: ['', Validators.required],
     })
   }
 

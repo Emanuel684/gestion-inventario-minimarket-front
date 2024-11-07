@@ -18,11 +18,16 @@ export class UsuariosService {
 
   postUsuario() {
     var complemento: String = 'crear-cuenta'
+    // Create a new Date object
+    const date = new Date()
+
+    // Format the date as "YYYY-MM-DDTHH:mm:ss"
+    const formattedDate = date.toISOString().slice(0, 19)
     var bodyU = {
       ciudad: 'Medellín',
       email: 'emanuelacag@gmail.com',
-      fecha_actualizacion: '1966-04-28T00:00:00',
-      fecha_creacion: '1966-04-28T00:00:00',
+      fecha_actualizacion: formattedDate,
+      fecha_creacion: formattedDate,
       id: '662d0d325363bbc93a0c0295',
       nombre_completo: 'Emanuel Acevedo',
       pais: 'Colombia',

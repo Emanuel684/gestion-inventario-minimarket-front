@@ -38,10 +38,15 @@ export class PedidosService {
   }
 
   postPedido(formValues: any, valorTotal: any, productos: any) {
+    // Create a new Date object
+    const date = new Date()
+
+    // Format the date as "YYYY-MM-DDTHH:mm:ss"
+    const formattedDate = date.toISOString().slice(0, 19)
     var bodyU = {
       direccion: formValues['direccion'],
-      fecha_actualizacion: '1966-04-28T00:00:00',
-      fecha_creacion: '1966-04-28T00:00:00',
+      fecha_actualizacion: formattedDate,
+      fecha_creacion: formattedDate,
       fecha_entrega: formValues['fechaEntrega'] + 'T00:00:00',
       id: '662d0d325363bbc93a0c0295',
       id_cliente: '662d0d325363bbc93a0c0295',
