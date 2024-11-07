@@ -13,10 +13,9 @@ import {
   Validators,
 } from '@angular/forms'
 import { RouterModule } from '@angular/router'
-import { UsuariosService } from '../../services/usuarios.services'
 import { ProductosComponent } from '../productos/productos.component'
 import { PedidosService } from '../../services/pedidos.services'
-import { LocalStorageService, SessionStorageService } from 'angular-web-storage'
+import { LocalStorageService } from 'angular-web-storage'
 
 @Component({
   selector: 'app-check-out',
@@ -42,38 +41,13 @@ export class CheckOutComponent implements OnInit {
   respuesta_clientes: any = {
     msg: 'Se obtuvo el resultado exitosamente.',
     success: true,
-    data: [
-      {
-        id: '6716b4727e2682dc485954a1',
-        nombre_completo: 'Emanuel Acevedo',
-        email: 'emanuelacag@gmail.com',
-        password: 'Ytpgs9m1!',
-        pais: 'Colombia',
-        ciudad: 'Medellín',
-        tipo: 'cliente',
-        fecha_creacion: '1966-04-28T00:00:00',
-        fecha_actualizacion: '1966-04-28T00:00:00',
-      },
-      {
-        id: '6717c09a4f00c9c785619f29',
-        nombre_completo: 'Carlos Acevedo',
-        email: 'carlosacag@gmail.com',
-        password: 'Ytpgs9m2!',
-        pais: 'Colombia',
-        ciudad: 'Medellín',
-        tipo: 'tendero',
-        fecha_creacion: '2024-10-22T00:00:00',
-        fecha_actualizacion: '2024-10-22T00:00:00',
-      },
-    ],
+    data: [{}],
   }
 
   constructor(
     private fb: FormBuilder,
-    private usuariosService: UsuariosService,
     private pedidosService: PedidosService,
     private local: LocalStorageService,
-    private session: SessionStorageService,
   ) {
     this.contactForm = this.fb.group({
       direccion: ['', Validators.required],
@@ -84,42 +58,44 @@ export class CheckOutComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log('contactForm: ', this.contactForm.value)
-      // console.log(this.contactForm.value)
-      // console.log('onSubmit: ')
-      // this.loginService.postUsuario()
-      // console.log('result: ', result)
-      // this.contactService.sendMessage(this.contactForm.value).subscribe(
-      //   (response) => {
-      //     this.toastrService.success('Message sent successfully!');
-      //     this.contactForm.reset(); // Reset form after submission
-      //   },
-      //   (error) => {
-      //     this.toastrService.error('Error sending message. Please try again.');
-      //   }
-      // );
     }
   }
 
   calTotal() {
     this.respuesta_clientes = this.local.get('productos_usuario')
+    console.log('this.respuesta_clientes: ', this.respuesta_clientes)
 
     var total_p = 0
 
-    for (const property of this.respuesta_clientes['data']) {
+    for (const property of this.respuesta_clientes?.data) {
       console.log(`${property}`)
       total_p = total_p + parseInt(property['precio'])
     }
 
     this.total_compras = total_p.toString()
     console.log('this.respuesta_clientes: ', this.respuesta_clientes)
+
+    this.local.set(
+      'productos_usuario',
+      { data: this.respuesta_clientes?.data },
+      20,
+      's',
+    )
   }
 
   ngOnInit(): void {
     this.calTotal()
+
+    this.local.set(
+      'productos_usuario',
+      { data: this.respuesta_clientes?.data },
+      20,
+      's',
+    )
   }
 
   deleteProducto(evento: any): void {
-    const result = this.respuesta_clientes['data'].filter(
+    const result = this.respuesta_clientes?.data.filter(
       (item: any) => item.id == evento.id,
     )
 
@@ -135,12 +111,12 @@ export class CheckOutComponent implements OnInit {
         }
         return false
       }
-      const x = this.respuesta_clientes['data'].filter(removeValue)
+      const x = this.respuesta_clientes?.data.filter(removeValue)
     }
 
     this.local.set(
       'productos_usuario',
-      { data: this.respuesta_clientes['data'] },
+      { data: this.respuesta_clientes?.data },
       20,
       's',
     )
@@ -153,7 +129,7 @@ export class CheckOutComponent implements OnInit {
     this.pedidosService.postPedido(
       this.contactForm.value,
       this.total_compras,
-      this.respuesta_clientes['data'],
+      this.respuesta_clientes?.data,
     )
 
     this.local.set(

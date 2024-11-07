@@ -89,15 +89,13 @@
           </table>
         </div>
         <div class="text-center w-100">
-          <a type="button" (click)="pagarProductos()" class="w-100">
-            <button
-              type="submit"
-              class="btn btn-primary container-sm w-100"
-              [disabled]="contactForm.invalid"
-            >
-              Pagar productos
-            </button>
-          </a>
+          <button
+            type="submit"
+            class="w-100 btn btn-lg btn-primary"
+            (click)="pagarProductos()"
+          >
+            <a type="button" href="/pedidos"> Pagar productos </a>
+          </button>
         </div>
       </form>
     </div>

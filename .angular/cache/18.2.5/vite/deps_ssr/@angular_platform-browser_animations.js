@@ -5,7 +5,8 @@ import {
   NoopAnimationsModule,
   provideAnimations,
   provideNoopAnimations
-} from "./chunk-6T4NCLSN.js";
+} from "./chunk-3LEOJN7S.js";
+import "./chunk-RCTFOWFO.js";
 import "./chunk-QTO3SF5R.js";
 import "./chunk-RZI3VICU.js";
 import "./chunk-BYPDXI4W.js";

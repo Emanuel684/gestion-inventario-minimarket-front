@@ -51,11 +51,9 @@ export class TenderoComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    var result_usuario = this.usuariosService.getTenderoInfo()
-    var result_tienda = this.tiendasService.getTiendaInfo()
-    this.resultado_tienda = result_tienda
-    this.resultado_usuario = result_usuario
+  async ngOnInit(): Promise<void> {
+    this.resultado_usuario = await this.usuariosService.getTenderoInfo()
+    this.resultado_tienda = await this.tiendasService.getTiendaInfo()
   }
 
   onSubmit() {

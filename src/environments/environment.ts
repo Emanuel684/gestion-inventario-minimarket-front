@@ -4,7 +4,7 @@
 
 import { EnvironmentConfiguration } from '../app/models/environment-configuration'
 
-const serverUrl = 'http://127.0.0.1:8000'
+const serverUrl = 'http://127.0.0.1:9090'
 // const serverUrl = 'https://gestion-inventario-minimarket-back.vercel.app'
 
 // The list of file replacements can be found in `angular.json`.

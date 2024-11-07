@@ -239,26 +239,35 @@
             </div>
           </div>
 
-          <div class="mb-3">
-            <label for="imagen" class="form-label">Imagen</label>
+          <div
+            class="file-upload-wrapper"
+            [class.success]="uploadSuccess"
+            [class.error]="uploadError"
+            (drop)="onFileDrop($event)"
+            (dragover)="onDragOver($event)"
+          >
             <input
-              type="imagen"
-              formControlName="imagen"
-              class="form-control"
-              id="imagen"
-              placeholder="Ingresa la url de la imagen del producto"
+              type="file"
+              accept="image/*"
+              (change)="onFileChange($event)"
+              #fileInput
             />
-            <div
-              *ngIf="
-                contactForm.get('imagen')?.invalid &&
-                (contactForm.get('imagen')?.touched ||
-                  contactForm.get('imagen')?.dirty)
-              "
-              class="text-danger"
-            >
-              <small *ngIf="contactForm.get('imagen')?.errors?.['required']"
-                >Imagen del producto requerida.</small
-              >
+            <div class="file-dropper" (click)="fileInput.click()">
+              <div *ngIf="imageName()">
+                <div *ngIf="selectedFile || imagePreview">
+                  <img
+                    [src]="imagePreview()"
+                    alt="Image Preview"
+                    class="image-preview"
+                  />
+                  <p>
+                    <span class="image-name">{{ imageName() }}</span> ({{
+                      fileSize()
+                    }}
+                    KB)
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

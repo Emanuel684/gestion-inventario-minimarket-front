@@ -86,12 +86,11 @@ export class UsuariosService {
     return resultado
   }
 
-  getTenderoInfo() {
+  async getTenderoInfo() {
     var complemento: String = 'iniciar-sesion'
     var email = 'carlosacag@gmail.com'
-    var response
 
-    var result = this.http
+    var resultado = await this.http
       .get(`${this.baseUrl}/${complemento}/${email}`)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -103,11 +102,9 @@ export class UsuariosService {
           return of()
         }),
       )
-      .subscribe((data) => {
-        response = data
-      })
+      .toPromise()
 
-    return response
+    return resultado
   }
 
   getUsuariosTienda() {
