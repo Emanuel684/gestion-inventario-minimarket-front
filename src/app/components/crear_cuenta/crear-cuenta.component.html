@@ -148,23 +148,23 @@
       <div class="col-lg-6 container-sm">
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="name" class="form-label">Nombre Completo</label>
+            <label for="nombre" class="form-label">Nombre Completo</label>
             <input
               type="text"
-              formControlName="name"
+              formControlName="nombre"
               class="form-control"
-              id="name"
+              id="nombre"
               placeholder="Ingresa tu nombre completo"
             />
             <div
               *ngIf="
-                contactForm.get('name')?.invalid &&
-                (contactForm.get('name')?.touched ||
-                  contactForm.get('name')?.dirty)
+                contactForm.get('nombre')?.invalid &&
+                (contactForm.get('nombre')?.touched ||
+                  contactForm.get('nombre')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('name')?.errors?.['required']"
+              <small *ngIf="contactForm.get('nombre')?.errors?.['required']"
                 >Nombre completo requerido.</small
               >
             </div>
@@ -196,43 +196,43 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="subject" class="form-label">Contraseña</label>
+            <label for="password" class="form-label">Contraseña</label>
             <input
               type="password"
-              formControlName="subject"
+              formControlName="password"
               class="form-control"
-              id="subject"
+              id="password"
             />
             <div
               *ngIf="
-                contactForm.get('subject')?.invalid &&
-                (contactForm.get('subject')?.touched ||
-                  contactForm.get('subject')?.dirty)
+                contactForm.get('password')?.invalid &&
+                (contactForm.get('password')?.touched ||
+                  contactForm.get('password')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('subject')?.errors?.['required']"
+              <small *ngIf="contactForm.get('password')?.errors?.['required']"
                 >Contraseña requerida.</small
               >
             </div>
           </div>
           <div class="mb-3">
-            <label for="message" class="form-label">Repetir Contraseña</label>
+            <label for="password_validator" class="form-label">Repetir Contraseña</label>
             <input
               type="password"
-              formControlName="message"
+              formControlName="password_validator"
               class="form-control"
-              id="message"
+              id="password_validator"
             />
             <div
               *ngIf="
-                contactForm.get('message')?.invalid &&
-                (contactForm.get('message')?.touched ||
-                  contactForm.get('message')?.dirty)
+                contactForm.get('password_validator')?.invalid &&
+                (contactForm.get('password_validator')?.touched ||
+                  contactForm.get('password_validator')?.dirty)
               "
               class="text-danger"
             >
-              <small *ngIf="contactForm.get('message')?.errors?.['required']"
+              <small *ngIf="contactForm.get('password_validator')?.errors?.['required']"
                 >Contraseña requerida.</small
               >
             </div>

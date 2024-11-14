@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router'
 import { ProductosService } from '../../services/productos.services'
 import { signal, ViewChild, ElementRef } from '@angular/core'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-agregar-producto',
