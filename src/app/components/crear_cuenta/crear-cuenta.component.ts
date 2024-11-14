@@ -26,10 +26,10 @@ export class CrearCuentaComponent implements OnInit {
     private loginService: UsuariosService,
   ) {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
+      password: ['', Validators.required],
+      password_validator: ['', Validators.required],
     })
   }
 
@@ -37,9 +37,11 @@ export class CrearCuentaComponent implements OnInit {
     console.log('oninit')
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      this.loginService.postUsuario()
+  async onSubmit() {
+    if (this.contactForm.valid && this.contactForm.value.password == this.contactForm.value.password_validator) {
+      var resultado = await this.loginService.postUsuario(this.contactForm.value)
+    }else{
+      console.log('No se pudo crear la cuenta')
     }
   }
 }

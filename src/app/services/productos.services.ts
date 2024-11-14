@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { environment } from '../../environments/environment'
 import { CourseCategory } from '../models/category'
 import { catchError, Observable, of } from 'rxjs'
+import { InventariosService } from './inventarios.services'
 
 @Injectable({
   providedIn: 'root',
@@ -10,19 +11,36 @@ import { catchError, Observable, of } from 'rxjs'
 export class ProductosService {
   private baseUrl = `${environment.apiUrl}/productos`
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private inventariosService: InventariosService,
+  ) {}
 
   async postProducto(producto: any, imagen: any) {
-    var base = {
-      fecha_actualizacion: '2024-11-01T00:00:00',
-      fecha_creacion: '2024-11-01T00:00:00',
+    // Create a new Date object
+    const date = new Date()
+
+    // Format the date as "YYYY-MM-DDTHH:mm:ss"
+    const formattedDate = date.toISOString().slice(0, 19)
+
+    var bodyU = {
+      fecha_actualizacion: formattedDate,
+      fecha_creacion: formattedDate,
       imagen: imagen,
       id: '662d0d325363bbc93a0c0295',
+      tipo: producto.tipo,
+      nombre: producto.nombre,
+      sub_tipo: producto.sub_tipo,
+      precio: producto.precio,
     }
-    var bodyU = Object.assign({}, base, producto)
+    // var bodyU = Object.assign({}, base, producto)
     var complemento: String = 'crear-producto'
 
-    var response = {}
+    var response = {
+      data: {
+        _id: '',
+      },
+    }
     response = await this.http
       .post(`${this.baseUrl}/${complemento}`, bodyU)
       .pipe(
@@ -36,6 +54,10 @@ export class ProductosService {
         }),
       )
       .toPromise()
+    await this.inventariosService.postProductoInventario(
+      response?.data['_id'],
+      producto.cantidadProductos,
+    )
 
     return response
   }

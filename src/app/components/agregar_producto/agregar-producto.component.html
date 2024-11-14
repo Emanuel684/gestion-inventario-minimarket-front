@@ -219,7 +219,7 @@
           <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
             <input
-              type="precio"
+              type="text"
               formControlName="precio"
               class="form-control"
               id="precio"
@@ -235,6 +235,34 @@
             >
               <small *ngIf="contactForm.get('precio')?.errors?.['required']"
                 >Precio requerido.</small
+              >
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="cantidadProductos" class="form-label"
+              >Cantida de productos</label
+            >
+            <input
+              type="text"
+              formControlName="cantidadProductos"
+              class="form-control"
+              id="cantidadProductos"
+              placeholder="Ingresa la cantidad de productos disponibles"
+            />
+            <div
+              *ngIf="
+                contactForm.get('cantidadProductos')?.invalid &&
+                (contactForm.get('cantidadProductos')?.touched ||
+                  contactForm.get('cantidadProductos')?.dirty)
+              "
+              class="text-danger"
+            >
+              <small
+                *ngIf="
+                  contactForm.get('cantidadProductos')?.errors?.['required']
+                "
+                >Cantidad de productos requerido.</small
               >
             </div>
           </div>

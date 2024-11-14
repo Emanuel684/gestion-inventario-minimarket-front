@@ -16,22 +16,32 @@ export class UsuariosService {
     private local: LocalStorageService,
   ) {}
 
-  postUsuario() {
+  async postUsuario(userInfo: any) {
+    // console.log('userInfo: ', userInfo)
+
     var complemento: String = 'crear-cuenta'
+    // Create a new Date object
+    const date = new Date()
+
+    // Format the date as "YYYY-MM-DDTHH:mm:ss"
+    const formattedDate = date.toISOString().slice(0, 19)
     var bodyU = {
       ciudad: 'Medellín',
-      email: 'emanuelacag@gmail.com',
-      fecha_actualizacion: '1966-04-28T00:00:00',
-      fecha_creacion: '1966-04-28T00:00:00',
+      email: userInfo.email,
+      fecha_actualizacion: formattedDate,
+      fecha_creacion: formattedDate,
       id: '662d0d325363bbc93a0c0295',
-      nombre_completo: 'Emanuel Acevedo',
+      nombre_completo: userInfo.nombre,
+      password: userInfo.password,
       pais: 'Colombia',
       tipo: 'cliente',
     }
 
-    var response = {}
+    // console.log('bodyU: ', bodyU)
 
-    this.http
+    // var response = {}
+
+    var response = await this.http
       .post(`${this.baseUrl}/${complemento}`, bodyU)
       .pipe(
         catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -43,18 +53,17 @@ export class UsuariosService {
           return of()
         }),
       )
-      .subscribe((data) => {
-        response = data
-      })
+      .toPromise()
+      // .subscribe((data) => {
+      //   response = data
+      // })
+    
+    window.location.replace('/');
 
     return response
   }
 
-  KEY = 'value'
-  value: any = null
-
   async getUsuario(formualario: any) {
-    this.local.set(this.KEY, { a: 1, now: +new Date() }, 20, 's')
 
     var complemento: String = 'iniciar-sesion'
     var email = 'emanuelacag@gmail.com'
@@ -81,7 +90,9 @@ export class UsuariosService {
     )
     if (resultado['password'] == formualario.password) {
       this.local.set('login', { validation: true }, 20, 's')
+
     }
+    window.location.replace('/');
 
     return resultado
   }

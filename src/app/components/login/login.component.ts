@@ -21,7 +21,7 @@ import { UsuariosService } from '../../services/usuarios.services'
 export class LoginComponent implements OnInit {
   title = 'Login'
   contactForm!: FormGroup
-  userId = 0
+  user_info = {}
   constructor(
     private fb: FormBuilder,
     private usuariosService: UsuariosService,
@@ -36,9 +36,10 @@ export class LoginComponent implements OnInit {
     console.log('oninit')
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.contactForm.valid) {
-      this.usuariosService.getUsuario(this.contactForm.value)
+      this.user_info = await this.usuariosService.getUsuario(this.contactForm.value)
     }
+    console.log('this.user_info: ', this.user_info)
   }
 }

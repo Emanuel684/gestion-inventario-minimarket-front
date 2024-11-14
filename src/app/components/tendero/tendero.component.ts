@@ -58,7 +58,7 @@ export class TenderoComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log('onSubmit')
+      console.log('onSubmit', this.contactForm.value)
     }
   }
 }
